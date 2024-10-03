@@ -1,0 +1,63 @@
+// Assets
+import user_icon from "/user_icon.svg";
+import log_out_icon from "/log_out_icon.svg";
+
+// Hooks
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useAuthentication } from "../../Hooks/useAuthentication";
+import { useGetUsers } from '../../Hooks/useGetUsers';
+
+// Components
+import Rooms from "../Rooms/Rooms";
+import UserSection from "../UserSection/UserSection";
+import ChatRoom from '../ChatRoom/ChatRoom';
+
+import { closeApp, setPage } from "../../state/app/appSlice";
+
+
+const ChatApp = () => {
+  const { apps } = useSelector(state => state.app)
+
+  const { room } = useSelector(state => state.room)
+  const { logOut } = useAuthentication()
+  const { user } = useSelector((state) => state.user)
+
+  useGetUsers()
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(room){
+      dispatch(setPage({name: "chat", page: "chat"}))
+    }else{
+      dispatch(setPage({name: "chat", page: "rooms"}))
+    }
+  }, [room])
+
+  const toggleUserSection = () => {
+    const chatElement = document.querySelector(".chat_app");
+    chatElement.classList.toggle("show_user_section")
+  }
+
+  return (user &&
+    <div
+      className={"chat_app" + `${apps["chat"].size_class}`}
+      data-page={apps["chat"].page}
+    >
+      <UserSection/>
+      <div className="section_bar">
+        <button onClick={() => toggleUserSection()}>
+          <img src={user_icon} alt="user icon"/>
+        </button>
+        <button onClick={()=> logOut()}>
+          <img src={log_out_icon} alt="log out icon"/>
+        </button>
+      </div>
+      <Rooms/>
+      <ChatRoom/>
+    </div>
+  )
+}
+
+export default ChatApp

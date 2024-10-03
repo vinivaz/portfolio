@@ -1,0 +1,240 @@
+
+
+.chat_app .rooms_and_users {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #131313;
+  /* background-color: #1D1E25;  */
+  overflow-x: auto;
+  padding-bottom: 80px;
+}
+
+.rooms_and_users .profile_btn,
+.rooms_and_users .logout_btn{
+  background-color: transparent;
+  border: none;
+  display: none;
+}
+
+.rooms_and_users button img{
+  max-width: 70px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.rooms_and_users .return_btn{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  padding: 7px;
+}
+
+.rooms_and_users .return_btn button{
+  padding: 5px;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #131313;
+  color: white ;
+}
+
+.rooms_and_users .return_btn button img{
+  width: 15px;
+}
+
+.rooms_and_users .options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0px;
+}
+
+.rooms_and_users .options .search_room_form {
+  background-color: #2D2D2F;
+  padding: 8px 13px;
+  border-radius: 13px;
+  display: flex;
+  margin: 6px 7px;
+  position: relative;
+}
+
+.rooms_and_users .options .search_room_form img {
+  width: 32px;
+  position: absolute;
+  right: 2px;
+  top: -2px;
+}
+
+.rooms_and_users .options .search_room_form input {
+  background-color: #2D2D2F;
+  padding: 3px 5px;
+  border: none;
+  outline: none;
+  color: #8B8B8B;
+  border-radius: 16px;
+}
+
+.rooms_and_users::-webkit-scrollbar {
+  width: 10px;
+}
+
+.rooms_and_users::-webkit-scrollbar-track {
+  background: #131313; 
+}
+
+.rooms_and_users::-webkit-scrollbar-thumb {
+  background-color: rgb(122, 122, 122);
+  border-radius: 20px;       
+  border: 3px solid #131313; 
+}
+
+.rooms_and_users .rooms .search_room{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: #131313;
+}
+
+.rooms_and_users .rooms .rooms_header, .rooms_and_users .users .users_header {
+  color: rgb(131, 131, 131);
+  width: 100%;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* margin: 10px 0px; */
+  font-size: 0.8em;
+  padding: 13px 18px;
+}
+
+.rooms_and_users .rooms .room,
+.rooms_and_users .users .user {
+  width: 100%;
+  height: 57px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.rooms_and_users .rooms .room .avatar,
+.rooms_and_users .users .user .avatar 
+{
+  width: 100%;
+  max-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row;
+  margin: 0 10px;
+  background-color: #2f2f2f;
+  overflow: hidden;
+
+}
+
+.rooms_and_users .rooms .room .avatar img,
+.rooms_and_users .users .user .avatar img
+{
+  width: 100%;
+  object-fit: cover;
+}
+
+.rooms_and_users .rooms .room .room_info,
+.rooms_and_users .users .user .user_info
+{
+  display: flex;
+  flex-direction: column;
+  text-align: start; 
+  width: 100%;
+}
+
+.rooms_and_users .rooms .room .room_info .username,
+.rooms_and_users .users .user .user_info .username {
+  color: white;
+  font-size: 0.75em;
+}
+
+.rooms_and_users .rooms .room .room_info .last_message,
+.rooms_and_users .users .user .user_info .last_message  {
+  color: #8B8B8B;
+  font-size: 0.66em;
+}
+
+.rooms_and_users .rooms .room .time,
+.rooms_and_users .users .user .time{
+  color: white;
+  font-size: 0.65em;
+  margin: 0 10px;
+}
+
+
+.no_rooms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+  padding: 15px 15px;
+}
+
+.no_rooms h3{
+  color: white;
+  font-size: 0.95em;
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.no_rooms img{
+  width:73px;
+}
+
+.no_rooms p{
+  color: #8d8d8d;
+  font-size: 0.68em;
+  padding: 22px;
+}
+
+.mobile .rooms_and_users {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #131313;
+  /* background-color: #1D1E25;  */
+  overflow-x: auto;
+  padding-bottom: 80px;
+}
+
+.md[data-page="chat"] .rooms_and_users,
+.sm[data-page="chat"] .rooms_and_users {
+  display: none;
+}
+
+.md[data-page="rooms"] .rooms_and_users,
+.sm[data-page="rooms"] .rooms_and_users {
+  display: flex;
+  width: 100%;
+}
+
+.md[data-page="rooms"] .rooms_and_users .profile_btn,
+.md[data-page="rooms"] .rooms_and_users .logout_btn,
+.sm[data-page="rooms"] .rooms_and_users .profile_btn,
+.sm[data-page="rooms"] .rooms_and_users .logout_btn{
+  display: flex;
+  width: 100%;
+  max-width: 40px;
+  flex-shrink: 0;
+}
+
+.md[data-page="rooms"] .rooms_and_users .search_room_form,
+.sm[data-page="rooms"] .rooms_and_users .search_room_form{
+  width: 100%;
+}
+
+

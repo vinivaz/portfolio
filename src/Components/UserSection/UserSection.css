@@ -1,0 +1,83 @@
+.chat_app .user_section {
+  display: none;
+}
+
+.show_user_section .user_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: black;
+  z-index: 1;
+}
+
+.show_user_section .user_section .return_btn {
+  width: 100%;
+}
+
+.show_user_section .user_section .avatar_profile {
+  width: 100px;
+  height: 100px;
+  background-color: #2f2f2f;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.show_user_section .user_section .user_settings {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  padding: 7px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2f2f2f;
+  outline: none;
+}
+
+.show_user_section .user_section .user_settings input[type="file"]{
+  display: none;
+}
+
+.show_user_section .user_section .user_settings span{
+  color: white;
+  padding: 10px;
+}
+
+.show_user_section .user_section .user_settings span{
+  color: white;
+  padding: 10px;
+}
+
+.show_user_section .user_section .return_btn button{
+
+  width: 35px;
+  margin: 17px 10px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.show_user_section .user_section .return_btn button img{
+  width: 100%;
+  pointer-events: none;
+}
+
+.show_user_section .user_section .avatar_profile img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.show_user_section .user_section .user_settings input{
+  border: none;
+  border-radius: 10px;
+  background-color: #2f2f2f;
+  outline: none;
+}
