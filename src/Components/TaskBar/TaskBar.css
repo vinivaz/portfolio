@@ -1,7 +1,9 @@
 .taskbar .mobile_nav .back {
   display: flex;
-  width: 2px;
-  height: 13px;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
   /* content: ''; */
   border-radius: 6px;
   border: none;
@@ -10,26 +12,25 @@
   position: relative;
 }
 
-.taskbar .mobile_nav .back::after,
-.taskbar .mobile_nav .back::before {
+.taskbar .mobile_nav .back span{
   display: flex;
   width: 2px;
   height: 11px;
-  content: '';
+  /* content: ''; */
   border-radius: 27px;
   /* border: solid 2px #fbfbfb8c; */
   background-color: #fbfbfb;
   position: absolute;
 }
 
-.taskbar .mobile_nav .back::before {
+.taskbar .mobile_nav .back span:first-of-type{
   rotate: 230deg;
-  top: -3px;
+  top: -1px;
 }
 
-.taskbar .mobile_nav .back::after {
+.taskbar .mobile_nav .back span:last-of-type {
   rotate: 130deg;
-  top: 3px;
+  top: 5px;
 }
 
 .taskbar .mobile_nav .home {
@@ -43,18 +44,17 @@
 
 .taskbar .mobile_nav .running_apps{
   display: flex;
-  width: 2px;
-  height: 13px;
-  /* content: ''; */
-  border-radius: 6px;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 15px;
+  height: 15px;
   border: none;
-  background-color: #fbfbfb;
+  background-color: transparent;
   padding: 0;
-  position: relative;
 }
 
-.taskbar .mobile_nav .running_apps::after,
-.taskbar .mobile_nav .running_apps::before {
+.taskbar .mobile_nav .running_apps span{
   display: flex;
   width: 2px;
   height: 13px;
@@ -62,16 +62,16 @@
   border-radius: 27px;
   /* border: solid 2px #fbfbfb8c; */
   background-color: #fbfbfb;
-  position: absolute;
+  /* position: absolute; */
 }
 
-.taskbar .mobile_nav .running_apps::before {
+/* .taskbar .mobile_nav .running_apps::before {
   left: -5px;
 }
 
 .taskbar .mobile_nav .running_apps::after {
   left: 5px;
-}
+} */
 
 .taskbar .desktop_status{
   display: none;

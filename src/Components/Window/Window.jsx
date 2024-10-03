@@ -147,7 +147,7 @@ const Window = ({app, children}) => {
       <div id="squareContent" className="squareContent">
         <div className="window-header">
           <div className="custom-actions">
-            <button id="test">File</button>
+            <button id="test">{app.name}</button>
           </div>
           <div
             id={app.drag_elements[0]}

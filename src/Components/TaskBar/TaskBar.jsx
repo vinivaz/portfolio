@@ -65,9 +65,16 @@ const TaskBar = () => {
   return (
     <div className="taskbar">
       <nav className="mobile_nav">
-        <button className="running_apps" onClick={() => handleClickRunningApps()}></button>
+        <button className="running_apps" onClick={() => handleClickRunningApps()}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <button className="home" onClick={() => handleClickHome()}></button>
-        <button className="back" onClick={handleClickBack}></button>
+        <button className="back" onClick={handleClickBack}>
+        <span></span>
+        <span></span>
+        </button>
       </nav>
       <div className="tasks">
 
