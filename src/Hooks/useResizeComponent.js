@@ -152,7 +152,10 @@ const useResizeComponent = (app, parentId = "main") => {
     handleSize()
 
     const handleResize = () => {
-      dispatch(minimizeAll())
+      if(!isMobile()){
+        dispatch(minimizeAll())
+      }
+
       handleSize()
     }
 
