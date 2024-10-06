@@ -16,6 +16,7 @@ import { setRoom, setRooms } from '../../state/room/roomSlice';
 
 // Hooks
 import { useAuthentication } from "../../Hooks/useAuthentication";
+import { useGetUsers } from "../../Hooks/useGetUsers";
 
 // Firebase
 import { collection, doc, query, where, orderBy, onSnapshot } from "firebase/firestore";
@@ -27,8 +28,8 @@ import { setPage } from "../../state/app/appSlice";
 
 const Rooms = () => {
   const { logOut } = useAuthentication()
-  const { users } = useSelector((state) => state.user);
-  const {user: loggedInUser } = useSelector((state) => state.user);
+  const { userAuthState, users, user: loggedInUser } = useSelector((state) => state.user);
+  // useGetUsers()
 
   const { rooms } = useSelector(state => state.room);
 
@@ -49,7 +50,6 @@ const Rooms = () => {
   */
   useEffect(() => {
 
-    const unsub = () => {
     //  this useEffect waits untill it gets access to all the users in the app 
     if(users === undefined || users.length === 0) return;
 
@@ -118,12 +118,10 @@ const Rooms = () => {
         ))
         setLoading(false)
       });
-    }
 
-    return () => {
-      unsub()
-      // setCancelled(true)
-    }
+    // return () => {
+    //   setCancelled(true)
+    // }
   },[users])
 
 

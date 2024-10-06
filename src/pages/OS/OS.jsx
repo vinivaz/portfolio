@@ -24,11 +24,8 @@ import ShortCut from '../../Components/ShortCut/ShortCut';
 import FalseWindow1 from '../../Components/FalseWindow1/FalseWindow1';
 
 // Redux
-import { openApp, showApp} from '../../state/app/appSlice';
+import { openApp, showApp, minimizeApp} from '../../state/app/appSlice';
 import { isMobile } from '../../services/appService';
-
-
-
 
 
 function OS() {
@@ -119,8 +116,14 @@ function OS() {
 
   const handleShortcutClick = (name) => {
     if(apps[name].open){
-      if(isMobile()){
-        dispatch(showApp(name));
+      // if(isMobile()){
+      //   dispatch(showApp(name));
+      // }
+
+      if(apps[name].minimized){
+        dispatch(showApp(name))
+      }else{
+        dispatch(minimizeApp(name))
       }
       return;
     }

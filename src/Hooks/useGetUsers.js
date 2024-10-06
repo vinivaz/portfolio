@@ -12,55 +12,49 @@ import { setUser, setUsers } from "../state/user/userSlice";
 
 export const useGetUsers = () => {
 
-  const { user, userAuthState } = useSelector((state) =>  state.user)
+  const { user, users, userAuthState } = useSelector((state) =>  state.user)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
 
 
-    const unsub = () => {
-      if(!userAuthState)return;
+    if(!userAuthState)return;
 
-      dispatch(setUsers(undefined))
-      dispatch(setUser(undefined))
-      console.log("aaaaa")
+    dispatch(setUsers(undefined))
+    dispatch(setUser(undefined))
+    console.log("aaaaa")
 
-      const collectionRef = collection(db, "users");
+    const collectionRef = collection(db, "users");
+  
+    const q = query(
+      collectionRef,
+      orderBy("createdAt", "desc")
+    ); 
     
-      const q = query(
-        collectionRef,
-        orderBy("createdAt", "desc")
-      ); 
-      
-      onSnapshot(q, (querySnapshot) => {
-    
-        const users = querySnapshot.docs.map((doc) => {
+    onSnapshot(q, (querySnapshot) => {
   
-          if(doc.data().uid == userAuthState.uid){
-  
-            dispatch(setUser({
-              ...user,
-              ...doc.data()
-            }))
-          }
-  
-          return({
-            id: doc.id,
+      const users = querySnapshot.docs.map((doc) => {
+
+        if(doc.data().uid == userAuthState.uid){
+
+          dispatch(setUser({
+            ...user,
             ...doc.data()
-          })
+          }))
+        }
+
+        return({
+          id: doc.id,
+          ...doc.data()
         })
-  
-        dispatch(setUsers(
-          users
-        ))
       })
 
-    }
+      dispatch(setUsers(
+        users
+      ))
+    })
 
-    return () => {
-      unsub()
-    } 
   }, [userAuthState]);
 
 }

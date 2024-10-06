@@ -28,11 +28,11 @@ const Register = ({setAuthPage}) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(userData)
+
     if(!userData.email || ! userData.email || !userData.name){
       return
     }
-    const user = await createUser(userData)
+    await createUser(userData)
   }
 
   return (

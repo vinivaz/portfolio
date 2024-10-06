@@ -39,6 +39,7 @@
 .register form input {
   border: solid 1px #d6d6d6;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .register form button {

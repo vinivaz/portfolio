@@ -17,6 +17,7 @@ body {
   align-items: start;
   flex-direction: column;
   background: linear-gradient(45deg, #673AB7, #52667f);
+  background-image: url('/Desktop - 1.png');
   overflow:hidden;
 }
 

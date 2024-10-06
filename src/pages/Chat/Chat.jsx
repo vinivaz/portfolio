@@ -34,7 +34,6 @@ import { onAuthStateChanged } from "firebase/auth";
 
 const Chat = () => {
 
-
   const [ authPage, setAuthPage ] = useState("login")
 
   const { apps } = useSelector(state => state.app)
@@ -55,7 +54,6 @@ const Chat = () => {
   //   const chatElement = document.querySelector(".chat_app");
   //   chatElement.classList.toggle("show_user_section")
   // }
-  useGetUsers()
 
 
   useEffect(() => {
@@ -75,9 +73,9 @@ const Chat = () => {
       }
 
     })
-  },[auth, dispatch, setUserAuthState])
+  },[auth])
 
-
+  // useGetUsers()
 
   const loadingUser = userAuthState === undefined;
 

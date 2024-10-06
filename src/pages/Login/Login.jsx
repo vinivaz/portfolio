@@ -26,11 +26,11 @@ const Login = ({setAuthPage}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData)
+
     if(!userData.email || ! userData.email){
       return
     }
-    const user = await login(userData)
+    await login(userData)
   }
 
   return (

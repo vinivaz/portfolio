@@ -135,7 +135,9 @@ const useResizeComponent = (app, parentId = "main") => {
           return;
         }
         mobile.current = true
+        
         appWindow.removeAttribute("style")
+        dispatch(minimizeAll())
         return;
       }else{
         // if(mobile.current == false){

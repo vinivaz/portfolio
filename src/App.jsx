@@ -64,16 +64,15 @@ function App() {
 
   return (
     <>
-
-      <BrowserRouter>
+      <OS/>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/portfolio/chat" element={<Chat/>}/>
-          <Route path="/portfolio/os" element={<OS/>}/>
-          {/* <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/> */}
-          <Route path="*" element={<Navigate to="/portfolio/os"/>}/>
+          <Route path="os" element={<OS/>}/>
+
+          <Route path="*" element={<Navigate to="os"/>}/>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   )
 }

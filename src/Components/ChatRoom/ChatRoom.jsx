@@ -30,10 +30,6 @@ const ChatRoom = () => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-  console.log(messages)
-  },[messages])
-
   useGetMessagesByRoom(room)
   return (
     <div className="chat">

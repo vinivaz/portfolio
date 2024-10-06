@@ -2,7 +2,8 @@
 import network_icon from "/network_icon.svg";
 import sound_icon from "/sound_icon.svg";
 import bluetooth_for_card from "/bluetooth_for_card.svg";
-import wifi_for_card from "/wifi_desktop_bar.svg"
+import wifi_for_card from "/wifi_desktop_bar.svg";
+import desktop_search from "/desktop_search_icon.svg"
 
 // Styles
 import "./TaskBar.css";
@@ -76,6 +77,20 @@ const TaskBar = () => {
         <span></span>
         </button>
       </nav>
+
+      <div className="system_start_button">
+        <button>
+
+        </button>
+      </div>
+
+      <div className="desktop_search">
+        <img src={desktop_search} alt="search icon" />
+        <input
+          type="text"
+          placeholder="Search"
+        />
+      </div>
       <div className="tasks">
 
         {apps.chat.open && (

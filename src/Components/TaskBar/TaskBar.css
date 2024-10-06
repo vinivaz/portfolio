@@ -73,7 +73,18 @@
   left: 5px;
 } */
 
+
+.taskbar .system_start_button {
+  display: none;
+}
+
+
 .taskbar .desktop_status{
+  display: none;
+
+}
+
+.taskbar .desktop_search{
   display: none;
 
 }
@@ -94,12 +105,56 @@
   .taskbar .mobile_nav{
     display: none;
   }
-  
-  .taskbar .tasks{
+
+  .taskbar .system_start_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 45px;
+  }
+
+  .taskbar .system_start_button button{
+    width: 35px;
+    height: 35px;
+    background-color: #171718;
+    border: none;
+  }
+
+  .taskbar .desktop_search{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    border: solid 1px #ddd;
+  }
+
+  .taskbar .desktop_search img {
+    width: 20px;
+    margin: 0px 11px;
+    pointer-events: none;
+}
+
+  .taskbar .desktop_search input{
+    width: 100%;
+    max-width: 250px;
+    height: 100%;
+    /* padding: 0 5px; */
+    outline: none;
+    border: none;
+  }
+
+
+  .taskbar .tasks {
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: center;
+    justify-content: start;
+    margin-left: 14px;
   }
 
   .taskbar .desktop_status {
@@ -109,6 +164,8 @@
     align-items: center;
     padding-right: 16px;
   }
+
+
 
   .taskbar .desktop_status .item {
     width: 28px;
