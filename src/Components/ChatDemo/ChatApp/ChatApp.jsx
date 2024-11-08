@@ -8,24 +8,19 @@ import log_out_icon from "/log_out_icon.svg";
 // Hooks
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useAuthentication } from "../../Hooks/useAuthentication";
-import { useGetUsers } from '../../Hooks/useGetUsers';
 
 // Components
 import Rooms from "../Rooms/Rooms";
 import UserSection from "../UserSection/UserSection";
 import ChatRoom from '../ChatRoom/ChatRoom';
 
-import { setPage } from "../../state/app/appSlice";
+import { setPage } from "../../../state/app/appSlice";
 
 
 const ChatApp = () => {
   const { apps } = useSelector(state => state.app);
   const { room } = useSelector(state => state.room);
   const { user } = useSelector((state) => state.user);
-  const { logOut } = useAuthentication();
-
-  useGetUsers();
 
   const dispatch = useDispatch();
 
@@ -42,7 +37,7 @@ const ChatApp = () => {
     chatElement.classList.toggle("show_user_section");
   };
 
-  return (user &&
+  return (
     <div
       className={"chat_app" + `${apps["chat"].size_class}`}
       data-page={apps["chat"].page}
@@ -52,7 +47,7 @@ const ChatApp = () => {
         <button onClick={() => toggleUserSection()}>
           <img src={user_icon} alt="user icon"/>
         </button>
-        <button onClick={()=> logOut()}>
+        <button>
           <img src={log_out_icon} alt="log out icon"/>
         </button>
       </div>

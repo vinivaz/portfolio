@@ -5,7 +5,7 @@ import logo_wallpaper from "/logo_wallpaper.svg";
 import styles from "./Login.module.css";
 
 // Hooks
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAuthentication } from "../../Hooks/useAuthentication";
 
 const Login = ({setAuthPage}) => {
@@ -59,8 +59,6 @@ const Login = ({setAuthPage}) => {
           <span onClick={() => setAuthPage("register")}>Criar conta.</span>
         </div>
       </form>
-
-
     </div>
   )
 }

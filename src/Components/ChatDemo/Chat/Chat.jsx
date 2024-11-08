@@ -10,42 +10,50 @@ import chat_logo from "/logo.svg"
 
 
 // Slices
-import {setUserAuthState } from "../../state/user/userSlice";
+import { setUser, setUsers } from "../../../state/user/userSlice.js";
+import { setRoom, setRooms } from "../../../state/room/roomSlice.js";
+import { setMessages } from "../../../state/message/messageSlice.js";
 
 // Hooks
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useAuthentication } from "../../Hooks/useAuthentication";
 
-// Pages
-import Register from "../Register/Register";
-import Login from "../Login/Login";
+
+// Data
+import { userData } from "../Database/userData.js";
+import { roomData } from "../Database/roomData.js";
+import { messageData } from "../Database/messageData.js";
 
 // Components
-import Window from "../../Components/Window/Window";
-import ChatApp from "../../Components/ChatApp/ChatApp.jsx";
-
-//firebase auth
-import { onAuthStateChanged } from "firebase/auth";
+import Window from "../../Window/Window";
+import ChatApp from "../ChatApp/ChatApp.jsx";
 
 const Chat = () => {
 
   const [firstScreen, setFirstScreen ] = useState(true)
 
-  const [ authPage, setAuthPage ] = useState("login")
-
   const { apps } = useSelector(state => state.app)
-
-  const { userAuthState,   user, users } = useSelector(state => state.user)
-  const state = useSelector(state => state)
-
+  const { rooms:stateRooms } = useSelector(state => state.room)
   const dispatch = useDispatch()
 
-  const { auth } = useAuthentication()
-
   useEffect(() => {
-    console.log(state)
-  },[state])
+    const {user, users} = userData();
+    const {room, rooms} = roomData();
+
+    dispatch(setUser(user))
+    dispatch(setUsers(users))
+
+    if(stateRooms.length === 0){
+      dispatch(setRooms(rooms))
+    }
+    
+    return () => {
+      dispatch(setUser(undefined))
+      dispatch(setUsers(undefined))
+      // dispatch(setRooms([]))
+      dispatch(setRoom(null))
+    }
+  },[])
 
   useEffect(() => {
     const intro = setTimeout(() => {
@@ -57,45 +65,11 @@ const Chat = () => {
     } 
   },[])
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (userAuthState) => {
-      if(userAuthState){
-        dispatch(setUserAuthState({
-          name: userAuthState.displayName,
-          email: userAuthState.email,
-          avatarURL: userAuthState.photoURL,
-          uid: userAuthState.uid
-        }))
-      }else{
-        dispatch(setUserAuthState(null))
-      }
-
-    })
-  },[auth])
-
-  const loadingUser = userAuthState === undefined;
-
-  if(loadingUser){
-    return <p>Loading...</p>
-  }
 
   return (
       <Window app={apps["chat"]}>
         {firstScreen ===false ?
-        <>
-          {userAuthState != null?
-            (<ChatApp/>
-            )
-            :
-            <>
-            {authPage == "login"?
-              <Login setAuthPage={setAuthPage}/>
-            :
-              <Register setAuthPage={setAuthPage}/>
-            }
-            </>
-          }
-        </>
+          <ChatApp/>
         :
         <div className="intro_container">
           <div className="intro">
@@ -121,9 +95,6 @@ const Chat = () => {
         </div>
            
         }
-
-
-
       </Window>
   )
 };

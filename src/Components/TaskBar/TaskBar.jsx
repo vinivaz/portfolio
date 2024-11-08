@@ -18,17 +18,18 @@ import { minimizeApp, showApp, setMobileMode, minimizeAll } from "../../state/ap
 
 const TaskBar = () => {
   const { apps, mobile_settings } = useSelector(state => state.app)
-  const [time, setTime] = useState(new Date());
+  const { time } = useSelector(state => state.system)
+  // const [time, setTime] = useState(new Date());
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTime(new Date());
+  //   }, 1000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const formatNumber = (number) => (number < 10 ? `0${number}` : number);
 
@@ -103,6 +104,11 @@ const TaskBar = () => {
             <img src={apps.lih.icon}/>
           </div>
         )}
+        {apps.portfolio.open && (
+          <div onClick={() => handleClickTask(apps.portfolio.name)} className="task">
+            <img src={apps.portfolio.icon}/>
+          </div>
+        )}
       </div>
       <div className="desktop_status">
         <div className="item bluetooth">
@@ -119,10 +125,10 @@ const TaskBar = () => {
         </div>
         <div className="date">
           <span>
-            {formatNumber(time.getHours())}:{formatNumber(time.getMinutes())}
+            {time.hours}:{time.minutes}
           </span>
           <span>
-            {formatNumber(time.getDate())}/{formatNumber(time.getMonth() + 1)}/{time.getFullYear()}
+            {time.day}/{time.month}/{time.year}
            </span>
         </div>
         <span></span>

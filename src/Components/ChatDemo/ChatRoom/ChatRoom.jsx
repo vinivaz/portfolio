@@ -10,10 +10,10 @@ import return_icon from "/return.svg"
 
 // Hooks
 import { useSelector, useDispatch } from "react-redux";
-import { useGetMessagesByRoom } from "../../Hooks/useGetMessagesByRoom";
+// import { useGetMessagesByRoom } from "../../Hooks/useGetMessagesByRoom";
 
 // Redux
-import { setPage } from "../../state/app/appSlice";
+import { setPage } from "../../../state/app/appSlice";
 
 // Components
 import SendMessage from "../SendMessage/SendMessage";
@@ -24,13 +24,12 @@ const ChatRoom = () => {
 
   const { messages } = useSelector((state) => state.message);
 
-  const { room } = useSelector((state) => state.room);
+  const { room, rooms } = useSelector((state) => state.room);
 
   const { user } = useSelector((state) => state.user);
 
   const dispatch = useDispatch()
-
-  useGetMessagesByRoom(room);
+  
 
   return (
     <div className="chat">
@@ -55,7 +54,7 @@ const ChatRoom = () => {
         <div className="messages">
           {!room.empty ? (<>
           <div className="previous_messages">
-            {messages && messages.map((message, index) => (
+            {rooms[room.index].messages && rooms[room.index].messages.map((message, index) => (
               <Message message={message} user={user} key={index}/>
             ))} 
           </div>

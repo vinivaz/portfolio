@@ -1,0 +1,301 @@
+/* 
+  the order of elements to be selected is the first element that comes,
+  then it's childrens and the next element.
+*/
+
+.chat .previous_messages .message_right {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row-reverse;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.chat .previous_messages .message_right .message_box {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  flex-direction: column;
+}
+
+.chat .previous_messages .message_right .message_box .message_reference {
+  align-items: end;
+}
+
+.chat .previous_messages .message_right .message {
+  background-image: linear-gradient(45deg, #4f1ba3, #6b28e1);
+  color: #fdfdfd;
+  max-width: 300px;
+  border-radius: 25px 25px 8px 25px;
+  /* box-shadow: inset -23px -20px 10px #0000003d; */
+  padding: 6px 10px;
+  position: relative;
+  z-index: 2;
+  font-size: var(--message-font-size);
+  line-height:var(--message-line-height);
+  font-weight: var(--message-font-weight);
+  word-break: break-all;
+}
+
+.chat .previous_messages .message_right .message_btn button{
+
+  border: none;
+  background-color: transparent;
+  color: rgb(110, 110, 110);
+  margin: 0 2px 0 0;
+}
+
+.chat .previous_messages .message_right .message_btn .message_options {
+  border-radius: 15px 15px 5px 15px;
+  right: 18px;
+  top: -76px;
+}
+
+.chat .previous_messages .message_right:last-of-type .message_btn .message_options
+{
+  border-radius: 14px 5px 14px 14px;
+  top: 22px;
+}
+
+.sm .previous_messages .message_right .message_btn .message_options {
+  border-radius: 15px 15px 15px 5px ;
+  right: -34px;
+  top: -76px;
+}
+
+.sm .previous_messages .message_right:last-of-type .message_btn .message_options {
+  border-radius: 5px 14px 14px 14px;
+  top: 22px;
+}
+
+.chat .previous_messages .message_right .message_btn .message_options button:first-of-type {
+  border-radius: 14px 14px 0 0;
+}
+
+.chat .previous_messages .message_right .message_btn .message_options button:last-of-type {
+  border-radius: 0 0 5px 14px;
+}
+
+.chat .previous_messages .message_right:last-of-type .message_btn .message_options button:first-of-type
+{
+  border-radius: 14px 5px 0 0;
+}
+
+.chat .previous_messages .message_right:last-of-type .message_btn .message_options button:last-of-type
+{
+  border-radius: 0 0 14px 14px;
+}
+
+.chat .previous_messages .message_right:last-of-type .message_btn .message_options button:first-of-type {
+  border-radius: 5px 14px 0 0;
+}
+
+
+
+
+
+.chat .previous_messages .message_left {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+
+.chat .previous_messages .message_left .message_box {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+
+.chat .previous_messages .message_left .message {
+  background-color: #ffffff;
+  color: #a7a7a7;
+  max-width: 300px;
+  border-radius: 25px 25px 25px 8px;
+  padding: 6px 10px;
+  position: relative;
+  z-index: 2;
+  font-size: var(--message-font-size);
+  line-height:var(--message-line-height);
+  font-weight: var(--message-font-weight);
+  word-break: break-all;
+  background-image: linear-gradient(45deg, #3f3f3f, #434343);
+}
+
+.chat .previous_messages .message_left .message_box .message_reference {
+  align-items: start;
+}
+
+.chat .previous_messages .message_left .message_btn button
+{
+
+  border: none;
+  background-color: transparent;
+  color: rgb(110, 110, 110);
+  margin: 0 0 0 3px;
+}
+
+.chat .previous_messages .message_left .message_btn .message_options {
+  border-radius: 15px 15px 15px 5px;
+  right: -38px;
+  top: -29px;
+}
+
+.chat .previous_messages .message_left:last-of-type .message_btn .message_options
+{
+
+  border-radius: 5px 14px 14px 14px;
+  top: 22px;
+}
+
+.sm .previous_messages .message_left .message_btn .message_options {
+  border-radius: 15px 15px 5px 15px;
+  right: 10px;
+  top: -29px;
+}
+
+.sm .previous_messages .message_left:last-of-type .message_btn .message_options {
+  border-radius: 14px 5px 14px 14px;
+  top: 22px;
+}
+
+.chat .previous_messages .message_left .message_btn .message_options button:only-child {
+  border-radius: 14px 14px 14px 5px;
+}
+
+.chat .previous_messages .message_left:last-of-type .message_btn .message_options button:only-child
+{
+  border-radius: 5px 14px 14px 14px;
+}
+
+.sm .previous_messages .message_left:last-of-type .message_btn .message_options button:only-child {
+  border-radius: 14px 5px 14px 14px;
+}
+
+.chat .previous_messages .message_left .message_btn .message_options button:only-child {
+  border-radius: 14px 14px 5px 14px;
+}
+
+
+
+.chat .previous_messages .message_left .image_message,
+.chat .previous_messages .message_right .image_message {
+  max-width: 250px;
+  width: 100%;
+  border-radius: 25px 25px 8px 25px;
+  z-index: 2;
+}
+
+.chat .previous_messages .message_left .image_message img,
+.chat .previous_messages .message_right .image_message img{
+
+  width: 100%;
+  border-radius: 10px;
+}
+
+.chat .previous_messages .message_right .message_btn,
+.chat .previous_messages .message_left .message_btn{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.chat .previous_messages .message_right .message_btn button img,
+.chat .previous_messages .message_left .message_btn button img{
+  width: 2px;
+  pointer-events: none;
+}
+
+.chat .previous_messages .message_right .message_btn .message_options,
+.chat .previous_messages .message_left .message_btn .message_options
+{
+  position: absolute;
+  background-color: #2b2b2b;
+  z-index: 5;
+  display: none;
+  max-width: 52px;
+}
+
+.chat .previous_messages .message_right .message_btn .show,
+.chat .previous_messages .message_left .message_btn .show
+{
+  display: block;
+}
+
+.chat .previous_messages .message_right .message_btn .message_options button,
+.chat .previous_messages .message_left .message_btn .message_options button
+{
+  width: 100%;
+  background-color: transparent;
+  color: rgb(160, 160, 160);
+  padding: 6px 4px 4px 4px;
+}
+
+.chat .previous_messages .message_right .message_btn .message_options button:hover,
+.chat .previous_messages .message_left .message_btn .message_options button:hover
+{
+  background-color: #717171;
+}
+
+
+
+.chat .previous_messages  .edited_tag {
+  color: grey;
+  font-size: .65em;
+}
+
+.chat .previous_messages .message_box .message_reference {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.chat .previous_messages .message_box .message_reference .message_reference_image{
+  max-width: 70px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.chat .previous_messages .message_box .message_reference .message_reference_image img{
+  width: 100%;
+  border-radius: 7px;
+}
+
+.chat .previous_messages .message_box .message_reference span {
+  font-size: 0.65em;
+  color: #a7a7a7;
+}
+
+.chat .previous_messages .message_box .message_reference .sent_message_left {
+  font-size: var(--message-font-size);
+  color: #cac9c9;
+  background-color: #3c3c3c;
+  padding: 3px 8px;
+  border-radius: 20px 20px 8px 20px;
+  background-image: linear-gradient(45deg, #4f1ba3, #6b28e1);
+  width: fit-content;
+
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: var(--message-reference-max-width);
+}
+
+.chat .previous_messages .message_box .message_reference .sent_message_right {
+  font-size: var(--message-reference-font-size);
+  color: #a5a5a5;
+  background-image: linear-gradient(45deg, #3f3f3f, #434343);
+  padding: 3px 8px;
+  border-radius: 20px 20px 20px 8px;
+  width: fit-content;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: var(--message-reference-max-width);
+}

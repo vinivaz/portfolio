@@ -1,6 +1,7 @@
 // Img
 import logo from "/logo.svg";
 import lih_logo from "/lih_logo.svg";
+import portfolio_logo from "/portfolio_logo.png";
 
 import { openFullscreen, closeFullscreen, isMobile } from "../../services/appService";
 
@@ -15,7 +16,7 @@ const initialState = {
     "chat": {
       id: 2,
       name: "chat",
-      zIndex: 20,
+      zIndex: 10,
       icon: logo,
       minimized: false,
       fullscreen: false,
@@ -36,7 +37,7 @@ const initialState = {
     "lih": {
       id: 1,
       name: "lih",
-      zIndex:30,
+      zIndex:20,
       icon: lih_logo,
       minimized: false,
       fullscreen: false,
@@ -53,11 +54,32 @@ const initialState = {
       left: undefined,
       page: "",
       size_class: ""
+    },
+    "portfolio": {
+      id: 3,
+      name: "portfolio",
+      zIndex: 30,
+      icon: portfolio_logo,
+      minimized: false,
+      fullscreen: false,
+      open: true,
+      appRect: undefined,
+      elementId: "portfolioId",
+      drag_elements: ["portfolioDraggableElementId"],
+      storedStyle: undefined,
+      width: 800,
+      height: 600,
+      top: undefined,
+      right: undefined,
+      bottom: undefined,
+      left: undefined,
+      page: "rooms",
+      size_class: ""
     }
   }
 }
 
-const bringAppToFront = (state, action) => {
+const bringAppToFront = (state, appName) => {
   const appIndexes = Object.keys(state.apps);
 
   const appQuantitys = appIndexes.length;
@@ -66,7 +88,7 @@ const bringAppToFront = (state, action) => {
 
   const lastZIndex = 10;
 
-  const appToFront = state.apps[action.payload]
+  const appToFront = state.apps[appName]
 
   if(appToFront.zIndex === frontZIndex)return;
 
@@ -95,6 +117,8 @@ const appSlice = createSlice({
         minimized: false,
 
       }
+
+      bringAppToFront(state, action.payload)
     },
     closeApp: (state, action) => {
       const app = state.apps[action.payload]
@@ -117,7 +141,7 @@ const appSlice = createSlice({
       app.minimized = false;
       state.mobile_settings.mode = "fullsized_app";
 
-      bringAppToFront(state, action);
+      bringAppToFront(state, action.payload);
 
     },
     minimizeMost: (state, action) => {
@@ -216,7 +240,7 @@ const appSlice = createSlice({
     },
     handleAppsZIndex: (state, action) => {
       
-      bringAppToFront(state, action)
+      bringAppToFront(state, action.payload)
     },
     updateAppRect: (state, action) => {
       const rect = action.payload.appRect
@@ -236,7 +260,11 @@ const appSlice = createSlice({
         state.apps[action.payload.name].size_class = " md"
       }
       
-      if(rect.width > 700){
+      if(rect.width > 700 && rect.width < 900){
+        state.apps[action.payload.name].size_class = " nm"
+      }
+
+      if(rect.width > 900){
         state.apps[action.payload.name].size_class = ""
       }
     },

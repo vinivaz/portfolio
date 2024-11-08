@@ -35,6 +35,116 @@
 }
 
 
+.window_element .window-header{
+  width: 100%;
+  background-color: black;
+  height: 35px;
+  display: flex;
+  justify-content: end;
+  cursor: move;
+}
+
+.window_element .window-header button{
+  background-color: transparent;
+  height: 35px;
+  border: none;
+  color: white;
+}
+
+.window_element .window-header .custom-actions button{
+  padding: 0 16px
+}
+
+.window_element .window-header .draggable{
+  width: 100%;
+
+  height: 35px;
+  display: flex;
+  justify-content: end;
+  cursor: move;
+}
+
+.window_element .window-header .basic-actions{
+
+  display: flex;
+  flex-direction: row;
+}
+
+.window_element .window-header .basic-actions button{
+  width: 35px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.window_element .window-header button:hover{
+  background-color: rgb(43, 43, 43);
+  
+}
+
+.window_element .window-header .basic-actions .close:hover{
+  background-color: rgb(112, 32, 32);
+  
+}
+
+.window_element .window-header .basic-actions .minimize::before{
+  background-color: #bdbdbd;
+  content: "";
+  width: 56%;
+  z-index: 3;
+  height: 1px;
+}
+
+.window_element .window-header .basic-actions .full-screen::before{
+  background-color: transparent;
+  content: "";
+  width: 8px;
+  height: 8px;  
+  z-index: 3;
+  border: solid 1px #bdbdbd;
+}
+
+.window_element .window-header .basic-actions .return_size::before{
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-bottom: 3px;
+  z-index: 2;
+  border: solid 1px #bdbdbd;
+}
+.window_element .window-header .basic-actions .return_size::after{
+  background-color: #1a1a1a;
+  content: "";
+  width: 8px;
+  height: 8px;  
+  z-index: 3;
+  border: solid 1px #bdbdbd;
+}
+
+.window_element .window-header .basic-actions .close::before{
+  background-color: #bdbdbd;
+  content: "";
+  width: 12px;
+  height: 1px;  
+  z-index: 3;
+  rotate: 49deg
+}
+
+.window_element .window-header .basic-actions .close::after{
+  background-color: #bdbdbd;
+  content: "";
+  width: 12px;
+  height: 1px;  
+  z-index: 3;
+  rotate: -46deg;
+  position: absolute;
+}
 
 
 @media (min-width: 700px) {

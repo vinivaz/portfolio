@@ -15,16 +15,24 @@ import wifi_for_card from "/wifi_for_card.svg"
 
 // Hooks
 import { useEffect,  useRef } from 'react'
+import { useSelector } from "react-redux";
 
 const Notification = () => {
 
   const startY = useRef(undefined);
-  
 
+  const { time } = useSelector(state => state.system)
+
+  /*
+    this function takes a number and returns the screen percentage
+    based on it
+  */
   const screenPercentage = (percentage) => {
     return percentage * window.innerHeight / 100
   }
 
+
+  
   const handleTouchStart = (e) => {
 
     const element = document.getElementById("notification")
@@ -70,10 +78,10 @@ const Notification = () => {
       element.removeAttribute("style")
     }
 
+    if(active&& (startY.current < screenPercentage(80)&& startY.current > screenPercentage(67))&& endY < screenPercentage(62)){
 
-    if(active && (startY.current < screenPercentage(70) && startY.current > screenPercentage(67)) &&
-      endY < screenPercentage(62)){
-      element.classList.remove("active")
+      const notificationElement = document.getElementById("notification")
+      notificationElement.classList.remove("active")
       startY.current = undefined;
       return
     }
@@ -98,7 +106,7 @@ const Notification = () => {
   return (
     <div id="notification" className={`mobile_info_bar`}>
       <div className="status_bar">
-        <span className="hour">10:50</span>
+        <span className="hour">{time.hours}:{time.minutes}</span>
         <div className="connection">
           <span><img src={wifi} alt="wi-fi icon"/></span>
           <span><img src={reception} alt="reception icon"/></span>
@@ -108,8 +116,8 @@ const Notification = () => {
       <div className="features">
         <section className="first">
           <div className="date_card">
-            <span className="hour">10:31</span>
-            <span className="date">Fri, Aug 30</span>
+            <span className="hour">{time.hours}:{time.minutes} </span>
+            <span className="date">{time.weekday}, {time.monthName} {time.day}</span>
           </div>
           <div className="buttons">
             <button><img src={edit} alt="edit icon"/></button>

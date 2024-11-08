@@ -19,14 +19,16 @@ import Notifications from '../../Components/Notifications/Notifications';
 import { useEffect, useCallback, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Chat from '../Chat/Chat';
+// import Chat from '../Chat/Chat';
+import Chat from '../../Components/ChatDemo/Chat/Chat';
 import ShortCut from '../../Components/ShortCut/ShortCut';
 import FalseWindow1 from '../../Components/FalseWindow1/FalseWindow1';
 
 // Redux
 import { openApp, showApp, minimizeApp} from '../../state/app/appSlice';
 import { isMobile } from '../../services/appService';
-
+import Portfolio from '../../Components/Portfolio/Portfolio';
+import { setTime } from '../../state/system/systemSlice';
 
 function OS() {
   const { apps, mobile_settings } = useSelector((state) => state.app)
@@ -114,6 +116,14 @@ function OS() {
     };
   }, []);
 
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     dispatch(setTime());
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
   const handleShortcutClick = (name) => {
     if(apps[name].open){
       // if(isMobile()){
@@ -150,6 +160,7 @@ function OS() {
         <div className="open_apps show" >
           {apps.chat.open && <Chat/>}
           {apps.lih.open && <FalseWindow1/>}
+          {apps.portfolio.open && <Portfolio/>}
         </div>
         <TaskBar/>
       </div>

@@ -12,23 +12,24 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Redux
-import {setHandlingMessage, setNewMessageText } from "../../state/message/messageSlice";
-import { setRoom } from "../../state/room/roomSlice";
+import {setHandlingMessage, setNewMessageText } from "../../../state/message/messageSlice";
+
 
 // Services
-import { createMessage, updateMessage, uploadImage } from "../../services/messageService";
-import { createRoom, updateRoom } from "../../services/roomService";
-import { readFile } from "../../services/appService";
+
+
+import { readFile } from "../../../services/appService";
 
 
 // Components
 import HandlingMessage from "../HandlingMessage/HandlingMessage";
-import { set } from "firebase/database";
+import { setRoom, setRooms } from "../../../state/room/roomSlice";
+
 
 const SendMessage = () => {
 
   const { user } = useSelector((state) => state.user)
-  const { room } = useSelector((state) => state.room)
+  const { room, rooms } = useSelector((state) => state.room)
   const { newMessageText, handlingMessage } = useSelector((state) => state.message);
   const [ image, setImage ] = useState({
     file: null,
@@ -39,58 +40,36 @@ const SendMessage = () => {
 
   const dispatch = useDispatch()
 
-  const createRoomAndSendMessage = async() => {
-    const newRoom = await createRoom({
-      users: room.users,
-      createdAt: new Date(Date.now()).toLocaleString(),
-      lastMessage: ""
-    })
-
-    await createMessage({
-      text: newMessageText.trim(),
-      userId: user.uid,
-      roomId: newRoom.id,
-      imageURL: "",
-      replyingTo: "",
-      createdAt: new Date(Date.now()).toLocaleString()
-    })
-
-    dispatch(setRoom({
-      users: room.users,
-      id: newRoom.id,
-      lastMessage: newMessageText.trim(),
-      name: room.name
-    }))
-
-    dispatch(setNewMessageText(""))
-  }
-
-  const createMessageWithImage = async() => {
+  const createMessageWithImage = () => {
 
     if(handlingMessage.status === "editing")return;
 
-    let newRoom = undefined;
-
-    if(room.empty){
-      newRoom = await createRoom({
-        users: room.users,
-        createdAt: new Date(Date.now()).toLocaleString(),
-        lastMessage: ""
-      })
-    }
-
-    const imageURL = await uploadImage("message_images/", image.file)
-
-    const messageData = {
-      text: newMessageText.trim(),
-      userId: user.uid,
-      roomId: newRoom == undefined? room.id : newRoom.id,
-      imageURL,
-      replyingTo: handlingMessage.status === "replying" ? handlingMessage.message : "",
-      createdAt: new Date(Date.now()).toLocaleString()
-    }
-
-    await createMessage(messageData)
+    dispatch(
+      setRooms(
+        rooms.map((singleRoom) => {
+          if(singleRoom.id === room.id){
+            return {
+              ...singleRoom,
+              lastMessage: `${room.name} sent you a picture.`,
+              messages: [
+                { 
+                  id: v4(),
+                  text: newMessageText.trim(),
+                  userId: user.uid,
+                  roomId: room.id,
+                  imageURL: image.dataURL,
+                  replyingTo: handlingMessage.status === "replying" ? handlingMessage.message : "",
+                  createdAt: new Date(Date.now()).toLocaleString()
+                },
+                ...singleRoom.messages,
+              ]
+            }
+          }else{
+            return singleRoom;
+          }
+        })
+      )
+    )
 
     setImage({
       file: null,
@@ -100,65 +79,87 @@ const SendMessage = () => {
     if(handlingMessage.status === "replying"){
       dispatch(setHandlingMessage({status: null, message: null}))
     }
-
-    if(newRoom != undefined){
-      dispatch(setRoom({
-        users: room.users,
-        id: newRoom.id,
-        lastMessage: "",
-        name: room.name
-      }))
-    }
-
     dispatch(setNewMessageText(""))
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     if(image.file){
       if(loading)return;
       setLoading(true);
-      await createMessageWithImage()
+      createMessageWithImage()
       setLoading(false)
       return
     }
 
     if(!newMessageText)return;
 
-    if(room.empty){
-      // const room = await createRoom()
-      createRoomAndSendMessage()
-      return
-    }
-
     if(handlingMessage.status === "editing"){
-      await updateMessage({
-        ...handlingMessage.message,
-        text: newMessageText.trim(),
-        edited: true,
-      })
+
+      dispatch(
+        setRooms(
+          rooms.map((singleRoom) => {
+            if(singleRoom.id === room.id){
+              return {
+                ...singleRoom,
+                messages:singleRoom.messages.map((roomMessage) => {
+                  if(roomMessage.id === handlingMessage.message.id){
+                    return {
+                      ...roomMessage,
+                      text: newMessageText.trim(),
+                      edited: true,
+                    }
+                  }else{
+                    return roomMessage
+                  }
+                })
+              }
+            }else{
+              return singleRoom;
+            }
+          }
+        )
+      ))
 
       dispatch(setHandlingMessage({
         status: null,
         message: null
       }))
-  
+
       dispatch(setNewMessageText(""))
 
       return
     }
 
-    await createMessage({
-      text: newMessageText.trim(),
-      userId: user.uid,
-      roomId: room.id,
-      imageURL: "",
-      replyingTo: handlingMessage.status === "replying" ? handlingMessage.message : "",
-      createdAt: new Date(Date.now()).toLocaleString()
-    })
+    dispatch(
+      setRooms(
+        rooms.map((singleRoom) => {
+          if(singleRoom.id === room.id){
+            return {
+              ...singleRoom,
+              lastMessage: newMessageText.trim(),
+              messages: [
 
-    await updateRoom( room.id, {lastMessage: newMessageText.trim()} )
+                { 
+                  id: v4(),
+                  text: newMessageText.trim(),
+                  userId: user.uid,
+                  roomId: room.id,
+                  imageURL: "",
+                  replyingTo: handlingMessage.status === "replying" ? handlingMessage.message : "",
+                  createdAt: new Date(Date.now()).toLocaleString()
+                },
+                ...singleRoom.messages,
+        
+              ]
+            }
+          }else{
+            return singleRoom;
+          }
+      })
+      )
+    )
 
     if(handlingMessage.status === "replying"){
       dispatch(setHandlingMessage({status: null, message: null}))
@@ -175,7 +176,6 @@ const SendMessage = () => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0]
       let imageDataUrl = await readFile(file)
-      console.log(imageDataUrl)
       setImage({file, dataURL: imageDataUrl})
       e.target.value = null;
     }

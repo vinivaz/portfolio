@@ -7,21 +7,15 @@ import { openFullscreen, closeFullscreen } from "../../services/appService";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    previous: "",
-    current: "menu",
-    viewport: "mobile",
-    fullscreen: {
-      status: false,
-      name: "",
-      elementId:"",
-      width: "",
-      height: "",
-      top: "",
-      right: "",
-      left: "",
-      x: "",
-      y: "",
-    }
+  time: {
+    hours: "",
+    minutes: "",
+    day: "",
+    weekday: "",
+    month: "",
+    monthName: "",
+    year: ""
+  },
 
 }
 
@@ -29,6 +23,21 @@ const systemSlice = createSlice({
   name: "system",
   initialState,
   reducers: {
+    setTime: (state) => {
+      const formatNumber = (number) => (number < 10 ? `0${number}` : number);
+      const time = new Date()
+
+      state.time = {
+        hours: formatNumber(time.getHours()),
+        minutes: formatNumber(time.getMinutes()),
+        day: formatNumber(time.getDate()),
+        weekday: time.toLocaleDateString("default", { weekday: 'short' }).slice(0, -1),
+        month: formatNumber(time.getMonth() + 1),
+        monthName: time.toLocaleString('default', { month: 'short' }).slice(0, -1),
+        year: time.getFullYear()
+      }
+      
+    },
     changeCurrent: (state, action) => {
       
       state.current = action.payload;
@@ -91,6 +100,6 @@ const systemSlice = createSlice({
   }
 })
 
-export const {  changeCurrent, showRunningApps, goToMenu, setAppFullscreen, unsetAppFullscreen } = systemSlice.actions;
+export const { setTime, changeCurrent, showRunningApps, goToMenu, setAppFullscreen, unsetAppFullscreen } = systemSlice.actions;
 
 export default systemSlice.reducer;

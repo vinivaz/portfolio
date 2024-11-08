@@ -1,8 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 
 const HandlingMessage = ({data, userId, cancel}) => {
-
-  
   return (
     <div
       className={data.status 

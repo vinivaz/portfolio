@@ -1,7 +1,7 @@
 // Styles
 // import "./TestWindow.css";
-import "./DraggableWindow.css"; 
-import "./Custom.css";
+// import "./DraggableWindow.css"; 
+// import "./Custom.css";
 // import "./OldSystemStyle.css"
 
 // Components

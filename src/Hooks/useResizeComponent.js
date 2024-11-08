@@ -78,9 +78,23 @@ const useResizeComponent = (app, parentId = "main") => {
       appWindow.appendChild(resizeElement)
     })
 
+    function sumOrSubNumber(num) {
+      // Generate a random number between 5 and 10
+      const randomValue = Math.floor(Math.random() * 6) + 5; // (0 to 5) + 5 = 5 to 10
+      
+      // Randomly decide whether to add or subtract
+      const shouldAdd = Math.random() < 0.5; // 50% chance to be true or false
+      
+      if (shouldAdd) {
+        return num + randomValue;
+      } else {
+        return num - randomValue;
+      }
+    }
 
-    /*get the initial position to the center of the screen and
-    
+
+    /*
+      get the initial position to the center of the screen and
     */
     const positionElement = (width, height) => {
 
@@ -98,8 +112,8 @@ const useResizeComponent = (app, parentId = "main") => {
         appHeight = screenHeightPercentage(80)
       }
 
-      appWindow.style.left = `${(windowWidth - appWidth) / 2}px`;
-      appWindow.style.top = `${(windowHeight - appHeight) / 2}px`;
+      appWindow.style.left = `${sumOrSubNumber(1)+(windowWidth - appWidth) / 2}px`;
+      appWindow.style.top = `${sumOrSubNumber(1)+(windowHeight - appHeight) / 2}px`;
 
       appWindow.style.width = appWidth + "px";
       appWindow.style.height = appHeight + "px";

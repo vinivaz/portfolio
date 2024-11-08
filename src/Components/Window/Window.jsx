@@ -1,5 +1,6 @@
 // Styles
 import "./Window.css";
+// import "./OldSystemStyle.css"
 
 // Hooks
 import useDrag from "../../Hooks/useDrag";
@@ -145,7 +146,7 @@ const Window = ({app, children}) => {
       onClick={() => handleMobileFullscreen()}
     >
       <div id="squareContent" className="squareContent">
-        <div className="window-header">
+        <div className="window-header" id={"window_header_" + app.name}>
           <div className="custom-actions">
             <button id="test">{app.name}</button>
           </div>
@@ -161,7 +162,15 @@ const Window = ({app, children}) => {
             >
 
             </button>
-            <button className="full-screen" onClick={() => handleAppFullsized()}></button>
+            <button
+              className={app.fullscreen === true?
+                "return_size"
+                :
+                "full-screen"
+              }
+              onClick={() => handleAppFullsized()}
+            >
+            </button>
             <button id="close" onClick={() => handleCloseApp()} className="close"></button>
           </div>
         </div>

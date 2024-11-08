@@ -1,12 +1,11 @@
 // Assets
 import logo_wallpaper from "/logo_wallpaper.svg";
 
-
 // Styles
 import styles from "./Register.module.css";
 
 // Hooks
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAuthentication } from "../../Hooks/useAuthentication";
 
 const Register = ({setAuthPage}) => {
@@ -64,13 +63,10 @@ const Register = ({setAuthPage}) => {
         />
         <button>Enviar</button>
         {error && <p className="error">{error}</p>}
-
         <div>
           <span onClick={() => setAuthPage("login")}>Entrar na conta existente</span>
         </div>
       </form>
-
-
     </div>
   )
 }

@@ -5,16 +5,15 @@ import "./Message.css";
 import more_icon from "/more_icon.svg";
 
 // Hooks
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Redux
-import { setHandlingMessage, setNewMessageText } from "../../state/message/messageSlice";
-
-// Services
-import { deleteImage, deleteMessage,  } from "../../services/messageService";
-
+import { setHandlingMessage, setNewMessageText } from "../../../state/message/messageSlice";
+import { setRoom, setRooms } from "../../../state/room/roomSlice";
 
 const Message = ({message, user}) => {
+  const { room, rooms } = useSelector(state => state.room);
+  
   const dispatch = useDispatch();
 
   const toggleMessageOpts = (messageId) => {
@@ -39,12 +38,37 @@ const Message = ({message, user}) => {
 
   }
 
-  const handleDeleteMessage = async(message) => {
-    if(message.imageURL != ""){
-      await deleteImage(message.imageURL);
-    }
+  const deleteMessage = (message) => {
 
-    deleteMessage(message.id);
+    dispatch(
+      setRooms(
+        rooms.map((singleRoom) => {
+          if(singleRoom.id === room.id){
+            return {
+              ...singleRoom,
+              messages:singleRoom.messages.filter(
+                (roomMessage) => { 
+                  return roomMessage.id !== message.id
+                }
+              )
+            }
+          }else{
+            return singleRoom;
+          }
+        }
+      )
+    ))
+    
+    // const { messages: roomMessages } = room;
+
+
+
+
+    // const newMessages = roomMessages.filter((roomMessage) => { roomMessage.id !== message.id})
+    // dispatch(setRoom({
+    //   ...room,
+    //   messages: newMessages
+    // }))
   }
 
   return (
@@ -147,7 +171,7 @@ const Message = ({message, user}) => {
                 edit
               </button>
               <button
-                onClick={() => handleDeleteMessage(message)}
+                onClick={() => deleteMessage(message)}
               >
                 delete
               </button>
