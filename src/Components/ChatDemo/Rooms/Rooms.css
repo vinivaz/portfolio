@@ -53,6 +53,60 @@
   padding: 12px 0px;
 }
 
+.rooms_and_users .options .loading_history {
+  animation: chatHistoryLoadingAnimation 5s linear normal;
+  background-color: #2D2D2F;
+  padding: 8px 13px;
+  border-radius: 13px;
+  display: flex;
+  margin: 6px 7px;
+  position: absolute;
+  z-index: 1000;
+  opacity: 100%;
+  top: -83px;
+}
+
+
+
+@keyframes chatHistoryLoadingAnimation{
+  0%{
+
+    opacity: 10%;
+  }
+  10%{
+    opacity: 100%;
+    top: 21px;
+  }
+  80%{
+    opacity: 100%;
+    top: 21px;
+  }
+
+  90%{
+    opacity: 10%;
+  }
+  100%{
+    top: -83px;
+    opacity: 0%;
+
+  }
+}
+
+.rooms_and_users .options .loading_history p {
+  color: white;
+  margin-right: 10px;
+}
+
+.rooms_and_users .options .loading_history img {
+  rotate: 29deg;
+  width: 15px;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  animation: loadingAnimation 0.5s linear infinite;
+}
+
+
+
 .rooms_and_users .options .search_room_form {
   background-color: #2D2D2F;
   padding: 8px 13px;

@@ -3,7 +3,9 @@ import messageReducer from "./message/messageSlice.js";
 import userReducer from "./user/userSlice.js"
 import roomReducer from "./room/roomSlice.js"
 import appReducer from "./app/appSlice.js"
-import systemSlice from "./system/systemSlice.js";
+import postReducer from "./post/postSlice.js";
+import systemReducer from "./system/systemSlice.js";
+
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +13,7 @@ export const store = configureStore({
     user: userReducer,
     room: roomReducer,
     app: appReducer,
-    system: systemSlice
+    post: postReducer,
+    system: systemReducer
   }
 });

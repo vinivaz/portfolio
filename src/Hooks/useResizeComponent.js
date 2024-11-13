@@ -288,13 +288,34 @@ const useResizeComponent = (app, parentId = "main") => {
       container.addEventListener("mousemove", mouseMove)
     }
 
+    const snapToTheEdges = () => {
+      const {x, y} = appWindow.getBoundingClientRect()
+
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const componentWidth = appWindow.offsetWidth;
+      const componentHeight = appWindow.offsetHeight;
+      const buffer = 20 
+
+              
+      const snappedX = x < buffer ? 0 : x + componentWidth > screenWidth - buffer ? screenWidth - componentWidth : x;
+      const snappedY = y < buffer ? 0 : y + componentHeight > screenHeight - buffer ? screenHeight - componentHeight : y;
+
+      appWindow.style.left = `${snappedX}px`
+      appWindow.style.top = `${snappedY}px`
+    }
+
     const mouseUp = () => {
     if(!canResize())return;
       isClicked.current = {
         status: false,
         element: null
       }
-
+      const {display} = window.getComputedStyle(appWindow, null);
+      
+      if(display !== "none"){
+        snapToTheEdges()
+      }
       coords.current.lastX = appWindow.offsetLeft;
       coords.current.lastY = appWindow.offsetTop;
 

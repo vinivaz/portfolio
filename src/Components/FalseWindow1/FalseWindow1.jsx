@@ -17,8 +17,6 @@ const FalseWindow1 = () => {
       >
         <div className="false_window_content">
           <iframe
-            // width="560"
-            // height="315"
             src="https://www.youtube.com/embed/NMRhx71bGo4?si=Ni1EUourSwgU7zGH"
             title="YouTube video player"
             frameBorder="0"

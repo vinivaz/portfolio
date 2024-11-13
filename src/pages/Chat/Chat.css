@@ -102,7 +102,7 @@
 
   border-radius: 10px;
   /* animation: chatLoadingAnimation 4s linear infinite; */
-  animation: chatLoadingAnimation 2s linear normal;
+  animation: chatLoadingAnimation 1.5s linear normal;
 }
 
 @keyframes chatLoadingAnimation{

@@ -50,7 +50,7 @@ const Chat = () => {
   useEffect(() => {
     const intro = setTimeout(() => {
       setFirstScreen(false)
-    },2000)
+    },1500)
 
     return () => {
       clearTimeout(intro)

@@ -75,6 +75,27 @@ const initialState = {
       left: undefined,
       page: "rooms",
       size_class: ""
+    },
+    "postmaker": {
+      id: 4,
+      name: "postmaker",
+      zIndex: 40,
+      icon: lih_logo,
+      minimized: false,
+      fullscreen: false,
+      open: true,
+      appRect: undefined,
+      elementId: "postmakerId",
+      drag_elements: ["postmakerDraggableElementId"],
+      storedStyle: undefined,
+      width: 800,
+      height: 600,
+      top: undefined,
+      right: undefined,
+      bottom: undefined,
+      left: undefined,
+      page: "",
+      size_class: ""
     }
   }
 }

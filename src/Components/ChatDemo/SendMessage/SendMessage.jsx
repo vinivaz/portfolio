@@ -50,7 +50,7 @@ const SendMessage = () => {
           if(singleRoom.id === room.id){
             return {
               ...singleRoom,
-              lastMessage: `${room.name} sent you a picture.`,
+              lastMessage: `photo sent by ${user.name}.`,
               messages: [
                 { 
                   id: v4(),

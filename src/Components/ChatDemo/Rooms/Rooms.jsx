@@ -4,6 +4,7 @@ import search_icon from "/search_icon.svg";
 import return_icon from "/return.svg";
 import user_icon from "/user_icon.svg";
 import log_out_icon from "/log_out_icon.svg";
+import send_message_loading from "/loading_circle.svg";
 
 // Style
 import "./Rooms.css";
@@ -16,16 +17,39 @@ import { useSelector, useDispatch } from "react-redux";
 import { setRoom, setRooms } from '../../../state/room/roomSlice';
 import { setPage } from "../../../state/app/appSlice";
 
+import { roomData } from "../Database/roomData.js";
+
 import { v4 } from "uuid";
 const Rooms = () => {
 
   const { users, user: loggedInUser } = useSelector((state) => state.user);
+  const { apps } = useSelector((state) => state.app);
   // useGetUsers()
 
   const { rooms } = useSelector(state => state.room);
-  const [ loading, setLoading ] = useState(false);
-
+  const [ loading, setLoading ] = useState(true);
+  const {width, page} = apps["chat"];
   const dispatch = useDispatch();
+
+  useEffect(() => {
+
+
+    if(width <= 700 && page == "initialScreen" && loading === true){
+      return
+
+    }
+
+    const loadingRooms = setTimeout(() => {
+      setLoading(false)
+      
+    },5000)
+
+
+    return () => {
+      clearTimeout(loadingRooms)
+      console.log("to cleanandor")
+    } 
+  },[width, page])
 
   const handleUserClick = (user) => {
     if(rooms){
@@ -92,9 +116,9 @@ const Rooms = () => {
    
   }
 
-  if(loading){
-    return<p>loading...</p>
-  }
+  // if(loading){
+  //   return<p>loading...</p>
+  // }
 
   return (
       <div className="rooms_and_users">
@@ -109,6 +133,15 @@ const Rooms = () => {
         <button className="logout_btn">
           <img src={log_out_icon} alt="log out icon"/>
         </button>
+          {page && page !== "initialScreen"? 
+            <div className="loading_history">
+              <p>Loading chat history</p>
+              <img src={send_message_loading} alt="loading icon"/>
+            </div>
+            :
+            ""
+          }
+
           <form className="search_room_form">
             <input
               type="text"
@@ -119,7 +152,7 @@ const Rooms = () => {
         </div>
         <div className="rooms">
         <div className="rooms_header">Histórico de conversas</div>
-          {rooms && rooms.length > 0 ? rooms.map((room, index) => (
+          {rooms && rooms.length > 0 && !loading ? rooms.map((room, index) => (
             <div
               className="room"
               key={index}
