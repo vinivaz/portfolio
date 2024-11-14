@@ -12,8 +12,7 @@ import "./navigation-bar.css";
 
 //https://www.tokyvideo.com/embed/296089
 
-// Assets
-import image_icon from "/studio/image-icon.svg";
+
 
 
 // Components
@@ -24,11 +23,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
 // Redux
-import { setTitle } from "../../state/post/postSlice";
+import { setTitle, createBlock } from "../../state/post/postSlice";
 
 import DOMPurify from 'dompurify';
 import BlockHandler from "./Components/BlockHandler/BlockHandler";
 import DeleteBLockDialogue from "./Components/DeleteBlockDialogue/DeleteBlockDialogue";
+import BlocksMap from "./Components/BlocksMap/BlocksMap";
 
 const Studio = () => {
   const { apps } = useSelector(state => state.app)
@@ -82,7 +82,9 @@ const Studio = () => {
       }
     }
 
-
+    const addBlock = (type) => {
+      dispatch(createBlock(type))
+    }
 
   return (
     <Window app={apps["postmaker"]}>
@@ -148,36 +150,13 @@ const Studio = () => {
                 id={block.id +"-vessel"}
                 className="block-vessel"
               >
-                <BlockHandler  block={block}/>
+                <BlockHandler block={block}/>
               </div> 
             )}
           </div>
         </div>
         <div className="controls">
-          <div className="map-placement post-editor">
-            <div className="map ui-sortable">
-              <div
-                className="block-icon-vessel img ui-sortable-handle"
-                id="28168539499-b-map"
-              >
-                <div className="block-icon img" id="28168539499-map" draggable="true">
-                  <img src={image_icon} />
-                </div>
-              </div>
-              <div
-                className="block-icon-vessel txt ui-sortable-handle"
-                id="454900306531-b-map"
-              >
-                <div
-                  className="block-icon txt"
-                  id="454900306531-map"
-                  draggable="true"
-                >
-                  <img src="/studio/text-only.svg" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <BlocksMap/>
           <div className="post_tools">
             <div className="finish-section post-editor">
               <button className="save">
@@ -188,19 +167,31 @@ const Studio = () => {
               </button>
             </div>
             <div className="block-opt post-editor">
-              <button className="text">
+              <button 
+                className="text"
+                onClick={() => addBlock("text")}
+              >
                 <span>Texto</span>
                 <img src="/studio/text-only.svg" />
               </button>
-              <button className="img">
+              <button
+                className="img"
+                onClick={() => addBlock("img")}
+              >
                 <span>Imagem</span>
                 <img src="/studio/image-icon.svg" />
               </button>
-              <button className="tweet">
+              <button
+                className="tweet"
+                onClick={() => addBlock("tt-embed")}
+              >
                 <span>Tweet</span>
                 <img src="/studio/twitter-circle.svg" />
               </button>
-              <button className="video">
+              <button
+                className="video"
+                onClick={() => addBlock("yt-embed")}
+              >
                 <span>Youtube</span>
                 <img src="/studio/youtube-icon.svg" />
               </button>

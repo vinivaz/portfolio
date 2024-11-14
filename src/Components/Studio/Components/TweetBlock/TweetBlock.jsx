@@ -37,7 +37,7 @@ const TweetBlock = ({ block }) => {
   }
 
   return (
-    <div className="block tt" id="344765269147">
+    <div className="block tt" id={block.id}>
       <div className="block-ctrl">
         <input
           type="text"

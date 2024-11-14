@@ -49,7 +49,7 @@ const VideoBlock = ({ block }) => {
   }
 
   return (
-    <div className="block yt" id="15618181980">
+    <div className="block yt" id={block.id}>
       <div className="block-ctrl">
         <input
           type="text"

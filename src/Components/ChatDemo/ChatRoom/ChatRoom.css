@@ -483,6 +483,7 @@ width: 21px;
 .chat .no_chat .no_chat_text{
   color: white;
   position: absolute;
+  text-align: center;
   z-index: 1;
   text-shadow: 1px 1px 5px rgb(51, 51, 51);
   padding: 40px;
