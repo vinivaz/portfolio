@@ -254,7 +254,7 @@ const appSlice = createSlice({
         storedStyle,
         fullscreen: true,
         minimized: false,
-        size_class: ""
+        size_class: isMobile()? state.apps[name].size_class: ""
       }
 
       state.mobile_settings.mode = "fullsized_app"
