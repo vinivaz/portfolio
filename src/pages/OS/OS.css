@@ -1,5 +1,9 @@
-
 .main .desktop {
+  height: 100%;
+  width: 100%;
+}
+
+.main .desktop_items {
   border: none;
   display: inline-flex;
   flex-wrap: wrap;
@@ -7,7 +11,7 @@
   height: 93%;
 }
 
-.main .desktop .shortcut{
+.main .desktop_items .shortcut{
 
   position: relative;
   width: 70px;

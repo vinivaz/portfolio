@@ -1,33 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import DOMPurify from "dompurify";
+import { Tweet } from 'react-tweet';
 
 // Hooks
 import { useDispatch } from "react-redux";
 
 // Redux
 // import { setTextBlock } from '../../../../state/post/postSlice';
-import { setDeletingBlock } from "../../../../state/post/postSlice";
+import { setDeletingBlock, setBlock } from "../../../../state/post/postSlice";
 
 const TweetBlock = ({ block }) => {
-
+  const [ tweetId, setTweetId ] = useState(block.content)
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+
+    const timeout = setTimeout(() => {
+      const modifiedBlock = {
+        ...block,
+        content: tweetId,
+      }
+      dispatch(setBlock({blockId: block.id, modifiedBlock}))
+    }, 2000)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+
+  },[tweetId])
+
   const handleBlur = (e) => {
     if (e.target.classList.contains("editable")) {
-      console.log(e.target.innerHTML);
-      console.log(e.target.innerText);
-      const sanitizedContent = DOMPurify.sanitize(e.target.innerHTML, {
-        ALLOWED_TAGS: ["b", "q", "div", "p", "a", "i", "span"],
-        ALLOWED_ATTR: ["style", "href"],
-      });
-      console.log(sanitizedContent);
 
-      dispatch(setTextBlock({ block, content: sanitizedContent }));
-
-      e.target.innerHTML = sanitizedContent;
-      e.target.removeAttribute("contentEditable");
     }
   };
 
@@ -42,15 +48,20 @@ const TweetBlock = ({ block }) => {
         <input
           type="text"
           className="tweet-input"
-          // value=""
-          onChange={(e) => console.log(e)}
+          value={ tweetId|| ""}
+          onChange={(e) => setTweetId(e.target.value)}
           id="344765269147-input"
           placeholder="tweet ID"
         />
-        <button onClick={() => handleDeleteBlock(block)} id="344765269147-button">x</button>
+        <button
+          onClick={() => handleDeleteBlock(block)}
+          id="344765269147-button">
+            &#10005;
+          </button>
       </div>
       <div className="block-content tweet" id="344765269147-tt">
-        <div
+        <Tweet id={block.content}/>
+        {/* <div
           className="twitter-tweet twitter-tweet-rendered"
           style={{
             display: "flex",
@@ -79,7 +90,7 @@ const TweetBlock = ({ block }) => {
             }}
             data-tweet-id="1854264521168154650"
           ></iframe>
-        </div>
+        </div> */}
       </div>
     </div>
   );

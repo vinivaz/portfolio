@@ -100,6 +100,28 @@ const initialState = {
   }
 }
 
+const handleAppSize = (state, appName) => {
+  if(appName == null)return;
+  const { width } = state.apps[appName];
+
+
+  if(width <= 390){
+    state.apps[appName].size_class = " sm"
+  }
+
+  if(width > 390 && width < 700){
+    state.apps[appName].size_class = " md"
+  }
+  
+  if(width > 700 && width < 900){
+    state.apps[appName].size_class = " nm"
+  }
+
+  if(width > 900){
+    state.apps[appName].size_class = ""
+  }
+}
+
 const bringAppToFront = (state, appName) => {
   const appIndexes = Object.keys(state.apps);
 
@@ -232,11 +254,13 @@ const appSlice = createSlice({
         storedStyle,
         fullscreen: true,
         minimized: false,
+        size_class: ""
       }
 
       state.mobile_settings.mode = "fullsized_app"
 
       appElement.removeAttribute("style");
+
 
     },
     unsetAppFullscreen: (state, action) => {
@@ -254,7 +278,7 @@ const appSlice = createSlice({
         minimized: isMobile(),
       }
 
-
+      handleAppSize(state, app.name)
     },
     setMobileMode:(state, action) => {
       state.mobile_settings.mode = action.payload;
@@ -271,23 +295,8 @@ const appSlice = createSlice({
         ...app,
         ...rect
       }
-      if(rect == null)return;
+      handleAppSize(state, action.payload.name)
 
-      if(rect.width <= 390){
-        state.apps[action.payload.name].size_class = " sm"
-      }
-
-      if(rect.width > 390 && rect.width < 700){
-        state.apps[action.payload.name].size_class = " md"
-      }
-      
-      if(rect.width > 700 && rect.width < 900){
-        state.apps[action.payload.name].size_class = " nm"
-      }
-
-      if(rect.width > 900){
-        state.apps[action.payload.name].size_class = ""
-      }
     },
     setPage: (state, action) => {
       const { name, page } = action.payload;

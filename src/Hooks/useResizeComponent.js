@@ -291,8 +291,10 @@ const useResizeComponent = (app, parentId = "main") => {
     const snapToTheEdges = () => {
       const {x, y} = appWindow.getBoundingClientRect()
 
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
+      const desktopElement = document.getElementById("desktop")
+
+      const screenWidth = desktopElement.offsetWidth;
+      const screenHeight = desktopElement.offsetHeight;
       const componentWidth = appWindow.offsetWidth;
       const componentHeight = appWindow.offsetHeight;
       const buffer = 20 

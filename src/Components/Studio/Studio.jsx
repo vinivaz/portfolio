@@ -45,7 +45,6 @@ const Studio = () => {
     // };
 
     useEffect(() => {
-      console.log(blocks)
 
       const postmakerElement = document.getElementById("webSiteContent");
 
@@ -86,11 +85,98 @@ const Studio = () => {
       dispatch(createBlock(type))
     }
 
+    const toggleMap = () => {
+      const mapElement = document.querySelector(".map-placement");
+      const toggleMapImage = document.getElementById("toggle_map_image");
+
+      mapElement.classList.toggle("hidden-map");
+
+      if(mapElement.classList.contains("hidden-map")){
+        toggleMapImage.src = "/studio/hidden-map.svg"
+      }else{
+        toggleMapImage.src = "/studio/showing-map.svg"
+      }
+    }
+
   return (
     <Window app={apps["postmaker"]}>
-      <div id="webSiteContent" className="notranslate">
+      <div id="webSiteContent" className={"notranslate" + `${apps["postmaker"].size_class}`}>
         <Navbar/>
         {deletingBlock && <DeleteBLockDialogue />}
+        <div className="post_tools">
+
+        <div className="finish-section post-editor">
+              <button className="save">
+                <img src="/studio/save-icon.svg" />
+              </button>
+              <button className="simulate">
+                <img src="/studio/show-icon.svg" />
+              </button>
+            </div>
+            
+            <div className="block-opt post-editor">
+              <button 
+                className="text"
+                onClick={() => addBlock("text")}
+              >
+                <img
+                  src="/studio/add icon.svg"
+                  alt="plus icon"
+                  className="add_icon"
+                />
+                {/* <span>Texto</span> */}
+                <img src="/studio/text-only.svg" />
+              </button>
+              <button
+                className="img"
+                onClick={() => addBlock("img")}
+              >
+                <img
+                  src="/studio/add icon.svg"
+                  alt="plus icon"
+                  className="add_icon"
+                />
+                {/* <span>Imagem</span> */}
+                <img src="/studio/image-icon.svg" />
+              </button>
+              <button
+                className="video"
+                onClick={() => addBlock("yt-embed")}
+              >
+                <img
+                  src="/studio/add icon.svg"
+                  alt="plus icon"
+                  className="add_icon"
+                />
+                {/* <span>Youtube</span> */}
+                <img src="/studio/youtube-icon.svg" />
+              </button>
+              <button
+                className="tweet"
+                onClick={() => addBlock("tt-embed")}
+              >
+                <img
+                  src="/studio/add icon.svg"
+                  alt="plus icon"
+                  className="add_icon"
+                />
+                {/* <span>Tweet</span> */}
+                <img src="/studio/twitter-icon.svg" />
+              </button>
+
+            </div>
+            
+            <div className="add-features post-editor">
+              <button
+                onClick={() => toggleMap()}
+              >
+                <img
+                  src="/studio/showing-map.svg"
+                  id="toggle_map_image"
+                />
+              </button>
+            </div>
+          </div>
         <div className="post-exemple post-editor">
           <div className="topic-section">
             <h3>Tópico:</h3>
@@ -157,7 +243,7 @@ const Studio = () => {
         </div>
         <div className="controls">
           <BlocksMap/>
-          <div className="post_tools">
+          {/* <div className="post_tools">
             <div className="finish-section post-editor">
               <button className="save">
                 <img src="/studio/save-icon.svg" />
@@ -202,7 +288,7 @@ const Studio = () => {
                 <img src="/studio/controls-icon.svg" />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </Window>

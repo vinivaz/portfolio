@@ -161,13 +161,13 @@ function OS() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     dispatch(setTime());
-  //   }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      dispatch(setTime());
+    }, 1000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleShortcutClick = (name) => {
     if(apps[name].open){
@@ -190,16 +190,19 @@ function OS() {
     {/* <ResizeTest/> */}
     <div  id="main" className={"main " + mobile_settings.mode}>
       <Notifications />
-      <div className="desktop mobile_menu">
-      {Object.keys(apps).map((appName, i) => (
-        <ShortCut
-          key={i}
-          img={apps[appName].icon}
-          name={apps[appName].name}
-          popUp={() => handleShortcutClick(apps[appName].name)}
-          dragElementsId={[appName + i, i + appName]}
-        />
-      ))}
+      <div className="desktop" id="desktop">
+        <div className="desktop_items mobile_menu">
+          {Object.keys(apps).map((appName, i) => (
+            <ShortCut
+              key={i}
+              img={apps[appName].icon}
+              name={apps[appName].name}
+              popUp={() => handleShortcutClick(apps[appName].name)}
+              dragElementsId={[appName + i, i + appName]}
+            />
+          ))}
+        </div>
+
       {/* <TextBox/> */}
       
       </div>

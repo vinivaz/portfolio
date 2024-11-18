@@ -15,7 +15,7 @@
 
 
 .nav-bar img{
-    height: 40px;
+    height: 35px;
 }
 
 .nav-bar .navigation-opts a{
@@ -46,10 +46,21 @@
     }
 
     .nav-bar img{
-        height: 34px;
+        height: 30px;
     }
     
 }
+
+
+    .md .nav-bar{
+        padding: 0 50px;
+        height: 75px;
+    }
+
+    .md .nav-bar img{
+        height: 30px;
+    }
+
 
 
 @media(max-width: 600px){
@@ -81,4 +92,14 @@
         height: 22px;
 
     }
+}
+
+.sm .nav-bar {
+    height: 56px;
+    padding: 0 20px;
+}
+
+.sm .nav-bar img{
+    height: 22px;
+
 }

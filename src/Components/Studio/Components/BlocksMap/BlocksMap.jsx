@@ -73,12 +73,11 @@ const BlockMapHandler = ({ index, block }) => {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}
-              class="block-icon-vessel tt"
-              id="896860645971-b-map"
+              class="block-icon-vessel"
               onClick={() => scrollToBlockView(block.id)}
             >
               <div class="block-icon tt" id="896860645971-map" >
-                <img src="/studio/twitter-circle.svg" />
+                <img src="/studio/twitter-icon.svg" />
               </div>
             </div>
           )}

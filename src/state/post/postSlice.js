@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { v4 } from "uuid";
+import DOMPurify from 'dompurify';
 
 const initialState = {
   deletingBlock: null,
@@ -84,8 +85,28 @@ const postSlice = createSlice({
     setBlocks: (state, action) => {
       state.blocks = action.payload;
     },
+    setBlock: (state, action) => {
+      const {blockId, modifiedBlock} = action.payload;
+      state.blocks = state.blocks.map((singleBlock) => {
+        if(singleBlock.id === blockId){
+          return modifiedBlock;
+        }else{
+          return singleBlock;
+        }
+      })
+    },
     setTextBlock: (state, action) => {
       const {block, content} = action.payload;
+      const sanitizedContent = DOMPurify.sanitize(
+        content,
+        {
+          ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br', 'ul', 'li', 'ol',
+            'b', 'q', 'div', 'p', 'a', 'i', 'span', 'u', 's', 'blockquote'
+          ],
+          ALLOWED_ATTR: ['style', 'href', 'rel', 'target']
+        }
+      )
+
       state.blocks = state.blocks.map((singleBlock) => {
         if(singleBlock.id === block.id){
           return {
@@ -158,7 +179,6 @@ const postSlice = createSlice({
         }
       }
 
-
       state.blocks = [
         ...state.blocks,
         newBlock
@@ -169,6 +189,6 @@ const postSlice = createSlice({
   
 })
 
-export const { setTitle, setBlocks, setTextBlock, setImageBlock, setDeletingBlock, deleteBlock, createBlock} = postSlice.actions;
+export const { setTitle, setBlocks, setBlock, setTextBlock, setImageBlock, setDeletingBlock, deleteBlock, createBlock} = postSlice.actions;
 
 export default postSlice.reducer;

@@ -201,12 +201,17 @@ const ImageBlock = ({ block }) => {
           >
             <img src="/studio/insert-link.svg"/>
           </span>
-          <button onClick={() => handleDeleteBlock(block)} id="548142114780-button">x</button>
+          <button
+            onClick={() => handleDeleteBlock(block)}
+            id="548142114780-button">
+              &#10005;
+            </button>
         </div>
         <div className="block-content img" id="548142114780-img-p">
           <img 
             onLoad={checkAspectRatio}
             src={block.url}
+            onError={(e) => {e.target.src = "/studio/image-icon-wide.svg"}}
           />
         </div>
         <div className="img-details">

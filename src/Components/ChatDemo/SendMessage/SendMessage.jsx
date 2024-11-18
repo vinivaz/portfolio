@@ -181,6 +181,13 @@ const SendMessage = () => {
     }
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Evita comportamentos padrão, como pular linha
+      handleSubmit(e)
+    }
+  };
+
 
   return (
     <div
@@ -232,6 +239,7 @@ const SendMessage = () => {
             className="message_input"
             value={newMessageText || ""}
             placeholder="Type a new message..."
+            onKeyDown={handleKeyDown}
           />
           <button className="record">
             <img src={mic} alt="abubleh"/>

@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import DOMPurify from 'dompurify';
 
@@ -11,7 +11,6 @@ import { setTextBlock, setDeletingBlock } from '../../../../state/post/postSlice
 
 import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css";
-
 
 
 const modules = {
@@ -28,28 +27,43 @@ const modules = {
 }
 
 const TextBlock = ({block}) => {
-  const [ value, setValue ] = useState("")
+  const [ value, setValue ] = useState(block.content)
 
   const dispatch = useDispatch()
 
-  const handleBlur = (e) => {
-    if(e.target.classList.contains("editable")){
-      console.log(e.target.innerHTML)
-      console.log(e.target.innerText)
-      const sanitizedContent = DOMPurify.sanitize(
-        e.target.innerHTML,
-        {
-          ALLOWED_TAGS: ['b', 'q', 'div', 'p', 'a', 'i', 'span'],
-          ALLOWED_ATTR: ['style', "href"]
-        }
-      )
-      console.log(sanitizedContent)
+  const sanitizer = (text) => {
+    const sanitizedContent = DOMPurify.sanitize(
+      text,
+      {
+        ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br', 'ul', 'li', 'ol',
+          'b', 'q', 'div', 'p', 'a', 'i', 'span', 'u', 's', 'blockquote'
+        ],
+        ALLOWED_ATTR: ['style', 'href', 'rel', 'target']
+      }
+    )
 
-      dispatch(setTextBlock({block, content: sanitizedContent}))
+    return sanitizedContent
+  }
 
-      e.target.innerHTML = sanitizedContent
-      e.target.removeAttribute("contentEditable")
-    }
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+
+  //     // console.log(sanitizedContent)
+
+  //     // dispatch(setTextBlock({block, content:sanitizedContent}))
+  //   }, 2000)
+
+  //   return () => {
+  //     clearTimeout(timeout)
+  //   }
+  // },[value])
+
+  const handleTyping = (text) => {
+
+      console.log(text)
+
+
+      // dispatch(setTextBlock({block, content: sanitizedContent}))
   };
 
   const handleDeleteBlock = (block) => {
@@ -66,12 +80,17 @@ const TextBlock = ({block}) => {
           className="delete_block"
           onClick={() => handleDeleteBlock(block)}
         >
-            &#10005;
-          </span>
+          &#10005;
+        </span>
         <ReactQuill
           theme='snow'
-          value={block.content}
-          onChange={(text) => dispatch(setTextBlock({block, content:text}))}
+          value={value}
+          onChange={(text) => {
+            setValue(text)
+            dispatch(setTextBlock({block, content:sanitizer(text)}))
+          }}
+
+          onBlur={() => setValue(block.content)}
           className='editor_input'
           modules={modules}
         />

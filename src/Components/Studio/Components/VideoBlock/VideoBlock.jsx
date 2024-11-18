@@ -1,52 +1,49 @@
-import { useState } from "react";
-
-import DOMPurify from "dompurify";
+import { useState, useEffect } from "react";
 
 // Hooks
 import { useDispatch } from "react-redux";
 
 // Redux
-// import { setTextBlock } from '../../../../state/post/postSlice';
-import { setDeletingBlock } from "../../../../state/post/postSlice";
+import { setDeletingBlock, setBlock } from "../../../../state/post/postSlice";
 
-const modules = {
-  toolbar: [
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ["bold", "italic", "underline", "strike", "blockquote", "link"],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      // {indent: "-1"},
-      // {indent: "+1"}
-    ],
-  ],
-};
+import YouTube from 'react-youtube';
+
 
 const VideoBlock = ({ block }) => {
-  const [value, setValue] = useState("");
+
+  const [ videoIdInput, setVideoIdInput ] = useState(block.content);
 
   const dispatch = useDispatch();
 
-  const handleBlur = (e) => {
-    if (e.target.classList.contains("editable")) {
-      console.log(e.target.innerHTML);
-      console.log(e.target.innerText);
-      const sanitizedContent = DOMPurify.sanitize(e.target.innerHTML, {
-        ALLOWED_TAGS: ["b", "q", "div", "p", "a", "i", "span"],
-        ALLOWED_ATTR: ["style", "href"],
-      });
-      console.log(sanitizedContent);
+  useEffect(() => {
 
-      dispatch(setTextBlock({ block, content: sanitizedContent }));
+    const timeout = setTimeout(() => {
+      const modifiedBlock = {
+        ...block,
+        content: videoIdInput,
+      }
+      dispatch(setBlock({blockId: block.id, modifiedBlock}))
+    }, 2000)
 
-      e.target.innerHTML = sanitizedContent;
-      e.target.removeAttribute("contentEditable");
+    return () => {
+      clearTimeout(timeout)
     }
-  };
 
-  const handleDeleteBlock = (block) => {
-    dispatch(setDeletingBlock(block))
+  },[videoIdInput])
+
+  const onPlayerReady= (event) => {
+    // access to player in all event handlers via event.target
+    event.target.pauseVideo();
   }
+
+  const opts = {
+    // height: '390',
+    // width: '640',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    },
+  };
 
   return (
     <div className="block yt" id={block.id}>
@@ -54,13 +51,24 @@ const VideoBlock = ({ block }) => {
         <input
           type="text"
           className="youtube-input"
-          id="15618181980-input"
-          // value=""
+          value={videoIdInput || ""}
           placeholder="video ID"
+          onChange={(e) => setVideoIdInput(e.target.value)}
         />
-        <button onClick={() => handleDeleteBlock(block)} id="15618181980-button">x</button>
+        <button
+          onClick={() => dispatch(setDeletingBlock(block))}
+        >
+          &#10005;
+        </button>
       </div>
-      <div className="block-content youtube" id="15618181980-yt-p">
+        <YouTube
+          className="block-content youtube"
+          videoId={block.content}
+          opts={opts}
+          onReady={onPlayerReady}
+        />
+       {/*<div className="block-content youtube" id="15618181980-yt-p">
+
         <iframe
           className="block-content youtube"
           id="15618181980-yt"
@@ -73,7 +81,7 @@ const VideoBlock = ({ block }) => {
           height="390"
           src="https://www.youtube.com/embed/NMRhx71bGo4?enablejsapi=1&amp;origin=http%3A%2F%2Flocalhost%3A3333&amp;widgetid=3"
         ></iframe>
-      </div>
+      </div>*/}
     </div>
   );
 };
