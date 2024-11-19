@@ -4,6 +4,23 @@ import DOMPurify from 'dompurify';
 
 const initialState = {
   deletingBlock: null,
+  creatingTopic: null,
+  visualizingPost: true,
+  topics: [
+    "NOTÍCIA",
+    "MÚSICA"
+  ],
+  // topics: [
+  //   {
+  //     name: "NOTÍCIA",
+  //     color: "blue"
+  //   },
+  //   {
+  //     name: "MÚSICA",
+  //     color: "blue"
+  //   },
+  // ],
+  topic: "NOTÍCIA",
   title: 'Lady Gaga - The Fame Monster',
   author: 'Vini',
   date: '27/05/2022',
@@ -78,6 +95,15 @@ const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
+    setPost: (state, action) => {
+      const postChanges = action.payload;
+      state = {
+        ...state,
+        ...postChanges
+      }
+
+      console.log(postChanges)
+    },
     setTitle: (state, action) => {
       state.title = action.payload;
       console.log(action.payload)
@@ -183,12 +209,38 @@ const postSlice = createSlice({
         ...state.blocks,
         newBlock
       ]
+    },
+    setTopic: (state, action) => {
+      state.topic = action.payload;
+    },
+    setCreatingTopic: (state, action) => {
+      state.creatingTopic = action.payload;
+    },
+    setTopics: (state, action) => {
+      state.topics = [
+        ...state.topics,
+        action.payload
+      ];
     }
 
   },
+
   
 })
 
-export const { setTitle, setBlocks, setBlock, setTextBlock, setImageBlock, setDeletingBlock, deleteBlock, createBlock} = postSlice.actions;
+export const {
+  setPost,
+  setTitle,
+  setBlocks, 
+  setBlock, 
+  setTextBlock,
+  setImageBlock, 
+  setDeletingBlock,
+  deleteBlock,
+  createBlock,
+  setTopic,
+  setCreatingTopic,
+  setTopics,
+} = postSlice.actions;
 
 export default postSlice.reducer;

@@ -23,26 +23,31 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
 // Redux
-import { setTitle, createBlock } from "../../state/post/postSlice";
+import { setPost, setTitle, createBlock, setCreatingTopic } from "../../state/post/postSlice";
 
 import DOMPurify from 'dompurify';
 import BlockHandler from "./Components/BlockHandler/BlockHandler";
 import DeleteBLockDialogue from "./Components/DeleteBlockDialogue/DeleteBlockDialogue";
 import BlocksMap from "./Components/BlocksMap/BlocksMap";
+import CreateTopic from "./Components/CreateTopic/CreateTopic";
+import Post from "./Components/Post/Post";
 
 const Studio = () => {
   const { apps } = useSelector(state => state.app)
-  const { title, blocks, deletingBlock } = useSelector(state => state.post)
+  const {
+    topic,
+    topics,
+    title,
+    blocks,
+    deletingBlock,
+    creatingTopic,
+    visualizingPost
+  } = useSelector(state => state.post)
    
-
+  useEffect(() => {
+    console.log(creatingTopic)
+  }, [creatingTopic])
   const dispatch = useDispatch()
-    // const handleInput = () => {
-    //   if (editorRef.current) {
-    //     setTitle(editorRef.current.innerHTML);
-    //     console.log(editorRef.current.innerHTML)
-    //     // moveCursorToEnd();
-    //   }
-    // };
 
     useEffect(() => {
 
@@ -102,7 +107,9 @@ const Studio = () => {
     <Window app={apps["postmaker"]}>
       <div id="webSiteContent" className={"notranslate" + `${apps["postmaker"].size_class}`}>
         <Navbar/>
+        {creatingTopic && <CreateTopic />}
         {deletingBlock && <DeleteBLockDialogue />}
+        {visualizingPost && <Post />}
         <div className="post_tools">
 
         <div className="finish-section post-editor">
@@ -181,15 +188,25 @@ const Studio = () => {
           <div className="topic-section">
             <h3>Tópico:</h3>
             <div className="select-topic">
-              {/* <select id="topicSelector" onChange={() => console.log("abubleh")} defaultValue={"NOTÍCIA"}>
-                <option value="NOTÍCIA">
-                  NOTÍCIA
-                </option>
-                <option value="MUSICA">MUSICA</option>
-              </select> */}
+              <select
+                id="topicSelector"
+                onChange={(e) => dispatch(setPost({topic: e.target.value}))}
+                defaultValue={topic || "NOTÍCIA"}
+              >
+                {topics && topics.map((singleTopic) => (
+                  <option value={singleTopic}>
+                    {singleTopic}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="add-topic-section">
-              <button id="show-add-topic">Novo</button>
+              <button
+                id="show-add-topic"
+                onClick={() => dispatch(setCreatingTopic(true))}
+              >
+                Novo
+              </button>
               <div className="add-topic-surrounding">
                 <p>✖</p>
                 <div className="add-topic">

@@ -109,6 +109,11 @@ const TaskBar = () => {
             <img src={apps.portfolio.icon}/>
           </div>
         )}
+        {apps.postmaker.open && (
+          <div onClick={() => handleClickTask(apps.postmaker.name)} className="task">
+            <img src={apps.postmaker.icon}/>
+          </div>
+        )}
       </div>
       <div className="desktop_status">
         <div className="item bluetooth">

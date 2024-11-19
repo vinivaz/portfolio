@@ -35,11 +35,11 @@ const BlockMapHandler = ({ index, block }) => {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}
-              class="block-icon-vessel img ui-sortable-handle"
+              className="block-icon-vessel img ui-sortable-handle"
               id="687124840574-b-map"
               onClick={() => scrollToBlockView(block.id)}
             >
-              <div class="block-icon img" id="687124840574-map">
+              <div className="block-icon img" id="687124840574-map">
                 <img src="/studio/image-icon.svg" />
               </div>
             </div>
@@ -54,11 +54,11 @@ const BlockMapHandler = ({ index, block }) => {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}
-              class="block-icon-vessel txt ui-sortable-handle"
+              className="block-icon-vessel txt ui-sortable-handle"
               id={"26923191356-b-map"}
               onClick={() => scrollToBlockView(block.id)}
             >
-              <div class="block-icon txt" id="26923191356-map" >
+              <div className="block-icon txt" id="26923191356-map" >
                 <img src="/studio/text-only.svg" />
               </div>
             </div>
@@ -73,10 +73,10 @@ const BlockMapHandler = ({ index, block }) => {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}
-              class="block-icon-vessel"
+              className="block-icon-vessel"
               onClick={() => scrollToBlockView(block.id)}
             >
-              <div class="block-icon tt" id="896860645971-map" >
+              <div className="block-icon tt" id="896860645971-map" >
                 <img src="/studio/twitter-icon.svg" />
               </div>
             </div>
@@ -91,11 +91,11 @@ const BlockMapHandler = ({ index, block }) => {
               {...provided.draggableProps}
               {...provided.dragHandleProps}
               ref={provided.innerRef}
-              class="block-icon-vessel yt"
+              className="block-icon-vessel yt"
               id="43026564852-b-map"
               onClick={() => scrollToBlockView(block.id)}
             >
-              <div class="block-icon yt" id="43026564852-map">
+              <div className="block-icon yt" id="43026564852-map">
                 <img src="/studio/youtube-icon.svg" />
               </div>
             </div>

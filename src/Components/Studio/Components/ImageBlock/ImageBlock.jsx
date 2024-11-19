@@ -93,7 +93,6 @@ const ImageBlock = ({ block }) => {
 
   const handleDeleteBlock = (block) => {
     dispatch(setDeletingBlock(block))
-    console.log(block)
   }
 
   const checkAspectRatio = (e) => {
