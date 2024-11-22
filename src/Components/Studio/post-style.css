@@ -10,7 +10,7 @@
   padding: 6px 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   font-family: var(--general-font);
   background-color: white;
   border: solid 1px #ddd;
@@ -20,6 +20,7 @@
   overflow-y: auto;
   max-width: 650px;
   margin-bottom: 40px;
+  
   /* margin-top: 48px; */
 }
 
@@ -37,17 +38,47 @@
   border: 3px solid #afafaf; 
 }
 
+.post-exemple .post_title_label{
+  padding: 60px 0 5px 0;
+}
 
+.post-exemple .post_title_label span,
+.post-exemple .subtitle_box span{
+  font-size: 2.5em;
+  font-weight: 500;
+  color: #b8b7b7;
+  padding: 30px 0 5px 0;
+}
 
 .post-exemple .postTitle{
   font-family: var(--general-font);
-  font-size: 5em;
-  margin-top: 64px;
+  font-size: 7em;
+  /* margin-top: 64px; */
   padding: 8px;
+  margin: 6px 0 0 0;
+  border: solid 1px #f0f0f0;
+  border-radius: 5px;
+  outline: none;
+}
+
+.post-exemple .subtitle_box {
+    margin: 9px 0 0 0;
+}
+.post-exemple .subtitle {
+  font-size: 3em;
+  padding: 8px;
+  border: solid 1px #f0f0f0;
+  outline: none;
+  border-radius: 5px;
+}
+
+.post-exemple .subtitle_box span{
+  
+
 }
 
 .post-exemple .post-info{
-  margin: 10px 0;
+  margin: 30px 0;
   padding-left: 8px;
   display: flex;
   width: 100%;
@@ -56,8 +87,12 @@
   justify-content: right;
 }
 
+.post-exemple .post-info span{
+  border-bottom: solid 3px #000000;
+}
+
 .post-exemple .post-info .category{
-  background-color: #2625fd;
+  background-color: #2184CB;
   color: #fff;
   padding: 7px;
   width: fit-content;

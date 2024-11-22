@@ -1,0 +1,23 @@
+<svg width="53" height="41" viewBox="0 0 53 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.646729 0.332397H52.7557V40.7313H0.646729V0.332397Z" fill="#F0F0F0"/>
+<rect x="12.8317" y="0.332397" width="27.7391" height="40.399" fill="#D9D9D9"/>
+<rect x="12.8317" y="0.332397" width="27.7391" height="2.98053" fill="black"/>
+<rect x="17.7719" y="6.46094" width="17.2634" height="2" fill="#434242"/>
+<rect x="17.7719" y="9.44537" width="10.9277" height="2" fill="#434242"/>
+<rect x="17.7719" y="13.0909" width="10.9277" height="1.19305" fill="#434242"/>
+<rect x="17.7719" y="16.8176" width="17.2634" height="8.19604" fill="#9B9B9B"/>
+<rect x="17.7719" y="26.6489" width="17.2634" height="1" fill="#7D7D7D"/>
+<rect x="17.7719" y="28.3879" width="17.2634" height="1" fill="#7D7D7D"/>
+<rect x="17.7719" y="30.4714" width="11.931" height="1" fill="#7D7D7D"/>
+<rect x="17.7719" y="33.4359" width="17.2634" height="1" fill="#7D7D7D"/>
+<rect x="17.7719" y="35.5341" width="17.2634" height="1" fill="#7D7D7D"/>
+<rect x="17.7719" y="37.6324" width="6.94104" height="1" fill="#7D7D7D"/>
+<rect width="2.15825" height="7.09908" transform="matrix(1 8.74228e-08 8.74228e-08 -1 0.646729 40.7314)" fill="#939393"/>
+<rect width="2.15825" height="7.09908" transform="matrix(-1.31134e-07 1 1 1.31134e-07 0.646729 38.5731)" fill="#939393"/>
+<rect x="0.646729" y="0.361877" width="2.15825" height="7.09908" fill="#939393"/>
+<rect x="0.646729" y="2.52014" width="2.15825" height="7.09908" transform="rotate(-90 0.646729 2.52014)" fill="#939393"/>
+<rect width="2.15825" height="7.09908" transform="matrix(-1 -8.74228e-08 -8.74228e-08 1 52.7557 0.332397)" fill="#939393"/>
+<rect width="2.15825" height="7.09908" transform="matrix(1.31134e-07 -1 -1 -1.31134e-07 52.7557 2.49066)" fill="#939393"/>
+<rect x="52.7556" y="40.7313" width="2.15825" height="7.09908" transform="rotate(180 52.7556 40.7313)" fill="#939393"/>
+<rect x="52.7556" y="38.5731" width="2.15825" height="7.09908" transform="rotate(90 52.7556 38.5731)" fill="#939393"/>
+</svg>

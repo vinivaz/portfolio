@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 // Redux
 import { setDeletingBlock, setBlock } from "../../../../state/post/postSlice";
 
-import YouTube from 'react-youtube';
+import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 
 
 const VideoBlock = ({ block }) => {
@@ -31,19 +31,6 @@ const VideoBlock = ({ block }) => {
 
   },[videoIdInput])
 
-  const onPlayerReady= (event) => {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  }
-
-  const opts = {
-    // height: '390',
-    // width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
-    },
-  };
 
   return (
     <div className="block yt" id={block.id}>
@@ -61,12 +48,7 @@ const VideoBlock = ({ block }) => {
           &#10005;
         </button>
       </div>
-        <YouTube
-          className="block-content youtube"
-          videoId={block.content}
-          opts={opts}
-          onReady={onPlayerReady}
-        />
+        <YoutubeEmbed videoId={block.content} />
        {/*<div className="block-content youtube" id="15618181980-yt-p">
 
         <iframe

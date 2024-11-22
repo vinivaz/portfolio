@@ -14,8 +14,8 @@
 .topic-section:after {
     content: '';
     position: absolute;
-    top: 46px;
-    left: 14px;
+    top: 31px;
+    /* left: 14px; */
     background: #0000001a;
     width: 213px;
     height: 2px;
@@ -46,11 +46,11 @@
 }
 
 .topic-section .select-topic select{
-    background-color: #2625fd;
+    background-color: #2184CB;
     border: none;
     /* border-radius: 5px; */
     color: #fff;
-    padding: 5px 4px;
+    padding: 5px 60px 5px 4px;
 }
 
 .topic-section .delete-topic-section{
@@ -198,7 +198,7 @@
 }
 
 .current-topic span{
-    background-color: #2625fd;
+    background-color: #2184CB;
     color: #fff;
     padding: 7px;
     font-size: 12px

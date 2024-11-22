@@ -14,6 +14,7 @@ const initialState = {
     weekday: "",
     month: "",
     monthName: "",
+    fullMonthName: "",
     year: ""
   },
 
@@ -34,6 +35,7 @@ const systemSlice = createSlice({
         weekday: time.toLocaleDateString("default", { weekday: 'short' }).slice(0, -1),
         month: formatNumber(time.getMonth() + 1),
         monthName: time.toLocaleString('default', { month: 'short' }).slice(0, -1),
+        fullMonthName: time.toLocaleString('default', { month: 'long' }),
         year: time.getFullYear()
       }
       

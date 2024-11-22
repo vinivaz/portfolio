@@ -8,7 +8,7 @@ import "./text-block.css";
 import "./topic-section.css";
 import "./tweet-block.css";
 import "./video-block.css";
-import "./navigation-bar.css";
+// import "./navigation-bar.css";
 
 //https://www.tokyvideo.com/embed/296089
 
@@ -18,12 +18,20 @@ import "./navigation-bar.css";
 // Components
 import Window from "../../Components/Window/Window";
 import Navbar from "./Components/Navbar/Navbar";
+
 //Hooks
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
 // Redux
-import { setPost, setTitle, createBlock, setCreatingTopic } from "../../state/post/postSlice";
+import {
+  setPost,
+  setTitle,
+  setSubtitle,
+  createBlock,
+  setCreatingTopic,
+  setVisualizingPost
+} from "../../state/post/postSlice";
 
 import DOMPurify from 'dompurify';
 import BlockHandler from "./Components/BlockHandler/BlockHandler";
@@ -33,57 +41,65 @@ import CreateTopic from "./Components/CreateTopic/CreateTopic";
 import Post from "./Components/Post/Post";
 
 const Studio = () => {
-  const { apps } = useSelector(state => state.app)
+  const { apps } = useSelector(state => state.app);
+  const { time } = useSelector(state => state.system)
   const {
     topic,
     topics,
     title,
+    subtitle,
     blocks,
     deletingBlock,
     creatingTopic,
-    visualizingPost
-  } = useSelector(state => state.post)
+    visualizingPost,
+  } = useSelector(state => state.post);
    
   useEffect(() => {
     console.log(creatingTopic)
   }, [creatingTopic])
   const dispatch = useDispatch()
 
-    useEffect(() => {
+    // useEffect(() => {
 
-      const postmakerElement = document.getElementById("webSiteContent");
+    //   const postmakerElement = document.getElementById("webSiteContent");
 
-      const handleClick = (e) => {
-        if(e.target.id === "postTitle"){
-          e.target.setAttribute("contentEditable", true)
-        }
+    //   const handleClick = (e) => {
+    //     if(e.target.id === "postTitle"){
+    //       e.target.setAttribute("contentEditable", true)
+    //     }
 
-        if(e.target.classList.contains("editable")){
-          e.target.setAttribute("contentEditable", true)
-        }
-      }
+    //     // if(e.target.classList.contains("subtitle")){
+    //     //   e.target.setAttribute("contentEditable", true)
+    //     // }
+    //   }
 
 
-      postmakerElement.addEventListener("click", handleClick);
+    //   postmakerElement.addEventListener("click", handleClick);
 
-      const cleanUp = () => {
-        postmakerElement.removeEventListener("click", handleClick);
-      }
-      return cleanUp;
-    },[blocks])
+    //   const cleanUp = () => {
+    //     postmakerElement.removeEventListener("click", handleClick);
+    //   }
+    //   return cleanUp;
+    // },[blocks])
 
-    const handleBlur = (e) => {
-      if(e.target.id === "postTitle"){
-        const postTitleContent = e.target.innerHTML
-        .replace(/&lt;.*?&gt;/g, "")
-        .replace(/<[^>]*>/g, '');
+    const handleClick = (e) => {
+      e.target.setAttribute("contentEditable", true)
 
-        // dispatch(setTitle(postTitleContent))
-        
-        e.target.innerHTML = postTitleContent
-        
-        return
-      }
+      e.target.focus()
+      // if(e.target.classList.contains("subtitle")){
+      //   e.target.setAttribute("contentEditable", true)
+      // }
+    }
+
+    const sanitizeContent = (e) => {
+      const sanitizedContent = e.target.innerHTML
+      .replace(/&lt;.*?&gt;/g, "")
+      .replace(/<[^>]*>/g, '');
+
+      e.target.innerHTML = sanitizedContent;
+
+      e.target.removeAttribute("contentEditable")
+      return sanitizedContent;
     }
 
     const addBlock = (type) => {
@@ -116,8 +132,11 @@ const Studio = () => {
               <button className="save">
                 <img src="/studio/save-icon.svg" />
               </button>
-              <button className="simulate">
-                <img src="/studio/show-icon.svg" />
+              <button
+                className="simulate"
+                onClick={() => dispatch(setVisualizingPost(!visualizingPost))}
+              >
+                <img src="/studio/result.svg" />
               </button>
             </div>
             
@@ -229,21 +248,33 @@ const Studio = () => {
               </div>
             </div>
           </div>
-          <h1
-            // contentEditable
-            // onInput={handleInput}
-            className="postTitle notranslate"
-            id="postTitle"
-            onBlur={(e) => handleBlur(e)}
-          >
-            {title}
-          </h1>
+          <label htmlFor="postTitle" className="post_title_label">
+            <span>clique para editar o título:</span>
+            <h1
+              name="title"
+              className="postTitle notranslate"
+              id="postTitle"
+              onClick={handleClick}
+              onBlur={(e) => dispatch(setTitle(sanitizeContent(e)))}
+            >
+              {title}
+            </h1>
+          </label>
+
+          <div className="subtitle_box">
+            <span>clique para editar subtítulo: </span>
+            <h2
+              className="subtitle notranslate"
+              onClick={handleClick}
+              onBlur={(e) => dispatch(setSubtitle(sanitizeContent(e)))}
+            >
+              {subtitle}
+            </h2>
+          </div>
+
           <div className="post-info">
             <div>
-              <span className="postDate">8/11/2024</span>
-            </div>
-            <div>
-              De: <span className="postAuthor">vini</span>
+            <span className="date">{time.day}, {time.fullMonthName} {time.year}</span>
             </div>
           </div>
           <div id="post-content">
@@ -260,52 +291,6 @@ const Studio = () => {
         </div>
         <div className="controls">
           <BlocksMap/>
-          {/* <div className="post_tools">
-            <div className="finish-section post-editor">
-              <button className="save">
-                <img src="/studio/save-icon.svg" />
-              </button>
-              <button className="simulate">
-                <img src="/studio/show-icon.svg" />
-              </button>
-            </div>
-            <div className="block-opt post-editor">
-              <button 
-                className="text"
-                onClick={() => addBlock("text")}
-              >
-                <span>Texto</span>
-                <img src="/studio/text-only.svg" />
-              </button>
-              <button
-                className="img"
-                onClick={() => addBlock("img")}
-              >
-                <span>Imagem</span>
-                <img src="/studio/image-icon.svg" />
-              </button>
-              <button
-                className="tweet"
-                onClick={() => addBlock("tt-embed")}
-              >
-                <span>Tweet</span>
-                <img src="/studio/twitter-circle.svg" />
-              </button>
-              <button
-                className="video"
-                onClick={() => addBlock("yt-embed")}
-              >
-                <span>Youtube</span>
-                <img src="/studio/youtube-icon.svg" />
-              </button>
-            </div>
-            
-            <div className="add-features post-editor">
-              <button>
-                <img src="/studio/controls-icon.svg" />
-              </button>
-            </div>
-          </div> */}
         </div>
       </div>
     </Window>
