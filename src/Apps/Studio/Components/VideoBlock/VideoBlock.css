@@ -1,0 +1,12 @@
+#post-content .youtube {
+  border: solid 2px var(--block-color);
+  background-color: var(--block-color);
+  width: 100%;
+  position: relative;
+  padding: 0;
+}
+
+#post-content .youtube iframe{
+  width: 100%;
+  
+}

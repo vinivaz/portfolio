@@ -2,7 +2,7 @@
 import {doc, addDoc, updateDoc, deleteDoc, collection } from "firebase/firestore";
 
 // Database
-import { db } from "../firebase/config"
+import { db } from "../Apps/ChatFirebase/firebase/config"
 
 export const createRoom = async(data) => {
 

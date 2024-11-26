@@ -1,5 +1,5 @@
 import { doc, addDoc, collection, updateDoc, deleteDoc } from "firebase/firestore";
-import { db, storage} from "../firebase/config";
+import { db, storage} from "../Apps/ChatFirebase/firebase/config";
 import {ref, uploadBytes, getDownloadURL, deleteObject, } from "firebase/storage";
 import { v4 } from "uuid";
 

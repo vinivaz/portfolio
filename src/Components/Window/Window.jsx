@@ -3,9 +3,9 @@ import "./Window.css";
 // import "./OldSystemStyle.css"
 
 // Hooks
-import useDrag from "../../Hooks/useDrag";
+// import useDrag from "../../Hooks/useDrag";
 import useResizeComponent from "../../Hooks/useResizeComponent";
-import { useResizeHandler } from "../../Hooks/useResizeHandler";
+
 import { useEffect, useRef} from "react";
 import { useDispatch, useSelector } from "react-redux";
 

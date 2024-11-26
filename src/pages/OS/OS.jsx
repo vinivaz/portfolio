@@ -1,15 +1,7 @@
 
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 
 // Styles
 import './OS.css'
-
-// // Img
-// import logo from "/logo.svg";
-// import lih_logo from "/lih_logo.svg";
-
-
 
 
 // Components
@@ -17,63 +9,24 @@ import './OS.css'
 import ResizableWindow from '../../Components/ResizableWindow/ResizableWindow';
 import TaskBar from '../../Components/TaskBar/TaskBar';
 import Notifications from '../../Components/Notifications/Notifications';
+import ShortCut from '../../Components/ShortCut/ShortCut';
 
 // Hooks
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-
-// import Chat from '../Chat/Chat';
-import Chat from '../../Components/ChatDemo/Chat/Chat';
-import ShortCut from '../../Components/ShortCut/ShortCut';
-import FalseWindow1 from '../../Components/FalseWindow1/FalseWindow1';
+// Apps
+import Chat from '../../Apps/Chat/Chat';
+// import Chat from "../../Apps/ChatFirebase/Chat";
+import FavSong from '../../Apps/FavSong/FavSong';
+import Studio from '../../Apps/Studio/Studio';
+import Portfolio from '../../Apps/Portfolio/Portfolio';
 
 // Redux
 import { openApp, showApp, minimizeApp} from '../../state/app/appSlice';
 import { isMobile } from '../../services/appService';
-import Portfolio from '../../Components/Portfolio/Portfolio';
 import { setTime } from '../../state/system/systemSlice';
-import Studio from '../../Components/Studio/Studio';
 
-
-// import ReactQuill from 'react-quill';
-// import "react-quill/dist/quill.snow.css";
-
-// const modules = {
-//   toolbar: [
-//     [{header: [1,2,3,4,5,6, false],}],
-//     ["bold", "italic", "underline", "strike", "blackquote", "link"],
-//     [
-//       {list: "ordered"},
-//       {list: "bullet"},
-//       // {indent: "-1"},
-//       // {indent: "+1"}
-//     ],
-//   ]
-// }
-
-// const TextBox = () => {
-//   const [ value, setValue ] = useState("")
-//   return (
-//      <div className='container'>
-//       <div className='row'>
-//         <div className="editor">
-//           <ReactQuill
-//             theme='snow'
-//             value={value}
-//             onChange={(value) => setValue(value)}
-//             className='editor_input'
-//             modules={modules}
-//           />
-//         </div>
-//         <div className="preview">
-//           {value}
-//         </div>
-//       </div>
-//     </div> 
-//   )
-
-// }
 
 function OS() {
   const { apps, mobile_settings } = useSelector((state) => state.app)
@@ -171,10 +124,6 @@ function OS() {
 
   const handleShortcutClick = (name) => {
     if(apps[name].open){
-      // if(isMobile()){
-      //   dispatch(showApp(name));
-      // }
-
       if(apps[name].minimized){
         dispatch(showApp(name))
       }else{
@@ -187,7 +136,6 @@ function OS() {
   }
 
   return (<>
-    {/* <ResizeTest/> */}
     <div  id="main" className={"main " + mobile_settings.mode}>
       <Notifications />
       <div className="desktop" id="desktop">
@@ -209,13 +157,12 @@ function OS() {
       <div className="mobile_sections show_open_apps">
         <div className="open_apps show" >
           {apps.chat.open && <Chat/>}
-          {apps.lih.open && <FalseWindow1/>}
+          {apps.lih.open && <FavSong/>}
           {apps.portfolio.open && <Portfolio/>}
           {apps.postmaker.open && <Studio/>}
         </div>
         <TaskBar/>
       </div>
-      
     </div>
     </>
   )

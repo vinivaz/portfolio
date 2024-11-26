@@ -2,7 +2,7 @@
   import { doc, updateDoc, collection, where, query } from "firebase/firestore"
 
   // Database
-  import { db } from "../firebase/config"
+  import { db } from "../Apps/ChatFirebase/firebase/config"
   
   export function readFile(file) {
     return new Promise((resolve) => {

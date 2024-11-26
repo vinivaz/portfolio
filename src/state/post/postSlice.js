@@ -23,8 +23,7 @@ const initialState = {
   topic: "NOTÍCIA",
   title: 'Dive deep into the Ghibli’s universe.',
   subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
-  author: 'Vini',
-  date: '21 de Novembro, 2023',
+  date: '21 de Novembro, 2024',
   blocks: [
     {
       id: "1",
@@ -34,7 +33,7 @@ const initialState = {
         content: "currents",
         link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"
       },
-      description: "the"
+      description: "From the movie: My Neighbor Totoro."
     },
     {
       id: "2",
@@ -105,6 +104,9 @@ const postSlice = createSlice({
       }
 
       console.log(postChanges)
+    },
+    setTopic: (state, action) => {
+      state.topic = action.payload;
     },
     setTitle: (state, action) => {
       state.title = action.payload;
@@ -215,9 +217,6 @@ const postSlice = createSlice({
         ...state.blocks,
         newBlock
       ]
-    },
-    setTopic: (state, action) => {
-      state.topic = action.payload;
     },
     setCreatingTopic: (state, action) => {
       state.creatingTopic = action.payload;

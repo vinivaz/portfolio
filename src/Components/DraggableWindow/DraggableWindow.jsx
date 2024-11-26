@@ -6,7 +6,7 @@
 
 // Components
 import useDrag from "../../Hooks/useDrag";
-import Chat from "../../pages/Chat/Chat";
+// import Chat from "../../pages/Chat/Chat";
 
 // Hooks
 // import { useEffect } from "react";
@@ -33,7 +33,7 @@ const DraggableWindow = ({container, parent, closeWindow}) => {
           <button id="close" onClick={() => closeWindow()} className="close"></button>
         </div>
       </div>
-      <Chat/>
+      {/* <Chat/> */}
     </>
   )
 }
