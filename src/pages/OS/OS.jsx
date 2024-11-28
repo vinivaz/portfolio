@@ -144,7 +144,7 @@ function OS() {
             <ShortCut
               key={i}
               img={apps[appName].icon}
-              name={apps[appName].name}
+              name={apps[appName].display_name}
               popUp={() => handleShortcutClick(apps[appName].name)}
               dragElementsId={[appName + i, i + appName]}
             />
@@ -159,7 +159,7 @@ function OS() {
           {apps.chat.open && <Chat/>}
           {apps.lih.open && <FavSong/>}
           {apps.portfolio.open && <Portfolio/>}
-          {apps.postmaker.open && <Studio/>}
+          {apps.studio_pop.open && <Studio/>}
         </div>
         <TaskBar/>
       </div>

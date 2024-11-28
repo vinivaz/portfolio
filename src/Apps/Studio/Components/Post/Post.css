@@ -12,13 +12,6 @@
 
 .md .post_container,
 .sm .post_container {
-  position: absolute;
-  width: 100%;
-  height: calc(100% - 80px);
-  background-color: white;
-  z-index: 2;
-  padding-top: 70px;
-  display: flex;
   align-items: center;
   justify-content: unset;
   flex-direction: column;

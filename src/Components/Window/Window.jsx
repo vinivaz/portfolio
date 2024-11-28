@@ -31,8 +31,6 @@ const Window = ({app, children}) => {
 
   const { apps, mobile_settings } = useSelector(state => state.app)
 
-  const size = {width: app.width, height: app.height}
-
   const { windowData } = useResizeComponent(app)
 
   const dispatch = useDispatch()
@@ -73,6 +71,7 @@ const Window = ({app, children}) => {
         dispatch(setAppFullscreen({app}))
       }
     }
+    console.log(app)
   },[app])
   
 
@@ -81,15 +80,15 @@ const Window = ({app, children}) => {
     if(app.fullscreen){
       dispatch(unsetAppFullscreen({app}))
       dispatch(setMobileMode("menu"))
-      if(isMobile()|| windowData.width <= 700){
-        dispatch(setSizeClass({name: "chat", sizeClass: " md"}))
-      }
+      // if(isMobile()|| windowData.width <= 700){
+      //   dispatch(setSizeClass({name: "chat", sizeClass: " md"}))
+      // }
       return;
     }
 
     dispatch(setAppFullscreen({app}))
     if(!isMobile()){
-      dispatch(setSizeClass({name: "chat", sizeClass: ""}))
+      dispatch(setSizeClass({name: app.name, sizeClass: ""}))
     }
   }
 
@@ -148,7 +147,7 @@ const Window = ({app, children}) => {
       <div id="squareContent" className="squareContent">
         <div className="window-header" id={"window_header_" + app.name}>
           <div className="custom-actions">
-            <button id="test">{app.name}</button>
+            <button id="test">{app.display_name}</button>
           </div>
           <div
             id={app.drag_elements[0]}

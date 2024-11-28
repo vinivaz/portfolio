@@ -2,10 +2,12 @@
 import logo from "/logo.svg";
 import lih_logo from "/lih_logo.svg";
 import portfolio_logo from "/portfolio_logo.png";
+import studio_pop_logo from "/studio/studio_pop_icon.png";
 
 import { openFullscreen, closeFullscreen, isMobile } from "../../services/appService";
 
 import { createSlice } from "@reduxjs/toolkit";
+import { displayName } from "react-quill";
 
 const initialState = {
   mobile_settings: {
@@ -16,6 +18,7 @@ const initialState = {
     "chat": {
       id: 2,
       name: "chat",
+      display_name: "chat",
       zIndex: 10,
       icon: logo,
       minimized: false,
@@ -37,6 +40,7 @@ const initialState = {
     "lih": {
       id: 1,
       name: "lih",
+      display_name: "lih",
       zIndex:20,
       icon: lih_logo,
       minimized: false,
@@ -58,6 +62,7 @@ const initialState = {
     "portfolio": {
       id: 3,
       name: "portfolio",
+      display_name: "portfolio",
       zIndex: 30,
       icon: portfolio_logo,
       minimized: false,
@@ -76,17 +81,18 @@ const initialState = {
       page: "rooms",
       size_class: ""
     },
-    "postmaker": {
+    "studio_pop": {
       id: 4,
-      name: "postmaker",
+      name: "studio_pop",
+      display_name: "Studio Pop",
       zIndex: 40,
-      icon: lih_logo,
+      icon: studio_pop_logo,
       minimized: false,
       fullscreen: false,
-      open: true,
+      open: false,
       appRect: undefined,
-      elementId: "postmakerId",
-      drag_elements: ["postmakerDraggableElementId"],
+      elementId: "studio_pop_id",
+      drag_elements: ["studio_pop_draggable_element_id"],
       storedStyle: undefined,
       width: 800,
       height: 600,
@@ -94,7 +100,7 @@ const initialState = {
       right: undefined,
       bottom: undefined,
       left: undefined,
-      page: "",
+      page: "home",
       size_class: ""
     }
   }

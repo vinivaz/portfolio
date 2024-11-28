@@ -1,3 +1,11 @@
+@media (max-width: 700px) {
+  .main input,
+  .main span[contenteditable],
+  .main div[contenteditable]{
+   font-size: 16px!important; 
+  }
+}
+
 .main .desktop {
   height: calc(100% - 45px);
   width: 100%;
@@ -70,10 +78,8 @@
     text-shadow: 1px 1px 2px black;
     font-size: 0.9em;
     max-height: 20px;
-    /* line-height: 10px; */
+    line-height: 16px;
   }
-  
-
   
   .main .mobile_sections {
     display: flex;

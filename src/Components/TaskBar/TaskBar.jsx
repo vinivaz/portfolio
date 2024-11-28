@@ -109,9 +109,9 @@ const TaskBar = () => {
             <img src={apps.portfolio.icon}/>
           </div>
         )}
-        {apps.postmaker.open && (
-          <div onClick={() => handleClickTask(apps.postmaker.name)} className="task">
-            <img src={apps.postmaker.icon}/>
+        {apps.studio_pop.open && (
+          <div onClick={() => handleClickTask(apps.studio_pop.name)} className="task">
+            <img src={apps.studio_pop.icon}/>
           </div>
         )}
       </div>

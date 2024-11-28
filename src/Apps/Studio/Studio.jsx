@@ -26,6 +26,7 @@ import {
   setCreatingTopic,
   setVisualizingPost
 } from "../../state/post/postSlice";
+import { setPage } from "../../state/app/appSlice";
 
 import DOMPurify from 'dompurify';
 import BlockHandler from "./Components/BlockHandler/BlockHandler";
@@ -33,9 +34,11 @@ import DeleteBLockDialogue from "./Components/DeleteBlockDialogue/DeleteBlockDia
 import BlocksMap from "./Components/BlocksMap/BlocksMap";
 import CreateTopic from "./Components/CreateTopic/CreateTopic";
 import Post from "./Components/Post/Post";
+import Home from "./Components/Home/Home";
 
 const Studio = () => {
   const { apps } = useSelector(state => state.app);
+  const { studio_pop } = apps;
   const { time } = useSelector(state => state.system)
   const {
     topic,
@@ -104,12 +107,13 @@ const Studio = () => {
   }
 
   return (
-    <Window app={apps["postmaker"]}>
-      <div id="webSiteContent" className={"notranslate" + `${apps["postmaker"].size_class}`}>
+    <Window app={apps["studio_pop"]}>
+      <div id="webSiteContent" className={"notranslate" + `${apps["studio_pop"].size_class}`}>
         <Navbar/>
         {creatingTopic && <CreateTopic />}
         {deletingBlock && <DeleteBLockDialogue />}
-        {visualizingPost && <Post />}
+        {studio_pop.page && studio_pop.page == "post" && <Post />}
+        {studio_pop.page && studio_pop.page == "home" && <Home />}
         <div className="post_tools">
 
         <div className="finish-section post-editor">
@@ -118,7 +122,10 @@ const Studio = () => {
               </button>
               <button
                 className="simulate"
-                onClick={() => dispatch(setVisualizingPost(!visualizingPost))}
+                onClick={() => dispatch(setPage({
+                  name: "studio_pop",
+                  page: "post"
+                }))}
               >
                 <img src="/studio/result.svg" />
               </button>

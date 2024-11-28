@@ -103,7 +103,6 @@ const ImageBlock = ({ block }) => {
     .replace(/&lt;.*?&gt;/g, "")
     .replace(/<[^>]*>/g, '');
 
-
     const modifiedBlock = {
       ...block,
       description: pictureDescription
@@ -197,7 +196,7 @@ const ImageBlock = ({ block }) => {
             id="548142114780-get-img-btn"
             className="get-img"
           >
-            select image
+            <img src="/studio/get-image-icon.svg" alt="select file image"/> Get image
             <input
               type="file"
               name="image"
@@ -206,7 +205,7 @@ const ImageBlock = ({ block }) => {
             />
           </label>
           
-          <span
+          {/* <span
             className="get-img"
             id="548142114780-add-link-btn"
             onClick={() => setLinkPopup({
@@ -216,7 +215,7 @@ const ImageBlock = ({ block }) => {
             })}
           >
             <img src="/studio/insert-link.svg"/>
-          </span>
+          </span> */}
           <button
             onClick={() => handleDeleteBlock(block)}
             id="548142114780-button">
@@ -231,11 +230,11 @@ const ImageBlock = ({ block }) => {
         </div>
         <div className="img-details">
           <div className="editable_hint">
-              <div className="editable_icon">
-                <img src="/studio/pencil.svg" alt="pencil icon"/>
-              </div>
-              <span>descrição: </span>
+            <div className="editable_icon">
+              <img src="/studio/pencil.svg" alt="pencil icon"/>
             </div>
+            <span>description: </span>
+          </div>
           <div
             className="description notranslate"
             id="548142114780-img-descript"
@@ -249,19 +248,40 @@ const ImageBlock = ({ block }) => {
             block.description
             }
           </div>
-          {block.credits.content && block.credits.link ?
+          
           <div className="credits">
-            <a href={block.credits.url} target="blank">{block.credits.content}</a>
-
-            <button
-              onClick={handleRemoveLink}
-            >
-              <img src="/studio/trash_icon.svg"/>
-            </button>
+            <div className="add_link_hint">
+              <div
+                className="add_link_btn"
+                onClick={() => setLinkPopup({
+                  showing: true,
+                  link: block.credits.content,
+                  url: block.credits.url
+                })}
+              >
+                <img src="/studio/insert-link.svg"/>
+                <span>Add link</span>
+              </div>
+            </div>
+            {block.credits.content && block.credits.link ?
+            <div className="picture_link">
+              <a
+                href={block.credits.url}
+                target="blank"
+              >
+                {block.credits.content}
+              </a>
+              <button
+                onClick={handleRemoveLink}
+              >
+                <img src="/studio/trash_icon.svg"/>
+              </button>
+            </div>
+            :
+            ""        
+            }
           </div>
-          :
-          ""        
-          }
+
 
         </div>
       </div>

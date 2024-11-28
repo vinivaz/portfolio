@@ -12,8 +12,8 @@ html
 :root{
     /* --block-color: #f6f6f6;
     --inner-input-color:#f7f7f7; */
-    --block-color: #f1f1f1;
-    --inner-input-color:#eeeeee;
+    --block-color: #ffffff;
+    --inner-input-color:#ffffff;
     --general-font:"Public Sans", system-ui, sans-serif;
   }
   
@@ -97,17 +97,13 @@ html
   .post-exemple .subtitle_box {
       margin: 9px 0 0 0;
   }
+  
   .post-exemple .subtitle {
-    font-size: 3em;
+    font-size: 3.1em;
     padding: 8px;
     border: solid 1px #f0f0f0;
     outline: none;
     margin: 6px 0 0 0;
-  }
-  
-  .post-exemple .subtitle_box span{
-    
-  
   }
   
   .post-exemple .post-info{
@@ -133,7 +129,6 @@ html
   
   .post-exemple #post-content{
     width: 100%;
-    
   }
   
   #post-content .block-vessel{
@@ -142,12 +137,16 @@ html
   }
   
   #post-content .block{
-    /* padding: 10px 0; */
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    border: solid 1px #ddd;
+  }
+
+  #post-content .txt{
+    border: none;
   }
   
   #post-content .block .delete_block{
@@ -161,8 +160,12 @@ html
   
   #post-content .block .block-ctrl{
     margin-left: 4px;
-    width: 98%;
-    display: inline-flex;
+    padding: 4px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 1px #ddd;
   }
   
   #post-content .block .block-ctrl input[type=text]{
@@ -173,38 +176,31 @@ html
     border-right: none ;
     border-bottom: none ;
     background-color: var(--inner-input-color);
-    color: #adadad;
+    color: #7a7a7a;
+    outline: none;
+    width: 100%;
   }
   
   #post-content .block .block-ctrl button{
-    background-color: var(--block-color);
-    
-    border-top: solid 2px var(--block-color);
-    border-left: solid 2px var(--block-color);
-    border-right: solid 2px var(--block-color);
-    border-bottom: none ;
+    border: none;
+    background-color: transparent;
+    margin-right: 7px;
     padding: 6px 8px;
     border-radius: 0 3px 0 0;
     color: black;
-  
+    font-size: 3em;
+    text-shadow: 0px 0px 1px black;
   }
   
   #post-content .block .block-content img{
-    /* border-top: solid 4px #f6f6f6;
-    border-bottom: solid 4px #f6f6f6; */
     border: solid 4px var(--block-color);
   }
   
   #post-content .block-content{
-    /* border-top: solid 4px #f6f6f6;
-    border-bottom: solid 4px #f6f6f6; */
-    /* background-color: #f6f6f6; */
     display: flex;
     justify-content: center;
-    
     width: 100%;
     min-height: 70px;
-    /* border: solid 2px var(--block-color); */
     background-color:  var(--block-color);
   }
   
