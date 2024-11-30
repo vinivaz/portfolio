@@ -1,6 +1,3 @@
-// Img
-import logo from "/logo.svg";
-import lih_logo from "/lih_logo.svg";
 
 import { openFullscreen, closeFullscreen } from "../../services/appService";
 

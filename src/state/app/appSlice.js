@@ -4,10 +4,9 @@ import lih_logo from "/lih_logo.png";
 import portfolio_logo from "/portfolio_logo.png";
 import studio_pop_logo from "/studio/studio_pop_icon.png";
 
-import { openFullscreen, closeFullscreen, isMobile } from "../../services/appService";
+import {isMobile } from "../../services/appService";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { displayName } from "react-quill";
 
 const initialState = {
   mobile_settings: {
