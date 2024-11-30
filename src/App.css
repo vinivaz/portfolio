@@ -17,7 +17,10 @@ body {
   align-items: start;
   flex-direction: column;
   background: linear-gradient(45deg, #673AB7, #52667f);
-  background-image: url('/Desktop - 1.png');
+  /* background-image: url('/Desktop - 1.png'); */
+  background-image: url('/studio/wallpaper-teste.png');
+  background-repeat:no-repeat;
+  background-size:cover;
   overflow:hidden;
 }
 

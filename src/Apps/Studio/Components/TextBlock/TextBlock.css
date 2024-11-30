@@ -44,6 +44,19 @@
  
 }
 
+.editor_input {
+
+}
+
+.ql-toolbar.ql-snow{
+  border-radius: 11px 11px 0 0;
+  /* overflow: hidden; */
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border-radius: 0 0 11px 11px;
+}
+
 
 @media (max-width: 700px) {
   .ql-editor {

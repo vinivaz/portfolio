@@ -25,6 +25,11 @@ const Navbar = () => {
         src="/studio/Studio_pop_logo.png"
         alt="54695-C6-C-A1-AA-4375-9-D90-44-F9-B53-D459-B"
         border="0"
+        onClick={() => dispatch(setPage({
+          name: "studio_pop",
+          page: "home"
+
+        }))}
       />
 
       <div className="navigation-opts">

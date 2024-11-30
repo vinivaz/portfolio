@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { minimizeApp, showApp, setMobileMode, minimizeAll } from "../../state/app/appSlice";
 // import { changeCurrent, goToMenu, showRunningApps } from "../../state/system/systemSlice";
 
+
+import { openFullscreen } from "../../services/appService";
 const TaskBar = () => {
   const { apps, mobile_settings } = useSelector(state => state.app)
   const { time } = useSelector(state => state.system)
@@ -116,7 +118,10 @@ const TaskBar = () => {
         )}
       </div>
       <div className="desktop_status">
-        <div className="item bluetooth">
+        <div
+          className="item bluetooth"
+          onClick={() => openFullscreen("main")}
+        >
           <img src={bluetooth_for_card} alt="bluetooh icon"/>
         </div>
         <div className="item wifi">

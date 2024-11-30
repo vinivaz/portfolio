@@ -28,7 +28,7 @@ const initialState = {
     {
       id: "1",
       type: "img",
-      url: "/studio/Totoro1.png",
+      url: "/studio/totoro_cropped_a.gif",
       credits: {
         content: "currents",
         link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"

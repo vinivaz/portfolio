@@ -13,7 +13,7 @@ import { setBlocks } from "../../../../state/post/postSlice";
 const BlockMapHandler = ({ index, block }) => {
 
   const scrollToBlockView = (blockId) =>{
-    const windowHeader = document.getElementById("window_header_postmaker");
+    const windowHeader = document.getElementById("window_header_studio_pop");
     const scrollingElement = document.querySelector(".post-exemple");
     const blockElement = document.getElementById(blockId);
 

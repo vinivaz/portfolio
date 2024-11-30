@@ -39,11 +39,23 @@
 
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
+      return;
     } else if (elem.webkitRequestFullscreen) { /* Safari */
       elem.webkitRequestFullscreen();
+      return;
     } else if (elem.msRequestFullscreen) { /* IE11 */
       elem.msRequestFullscreen();
+      return;
+    } 
+    if (elem.exitFullscreen) {
+      elem.exitFullscreen();
+    } else if (elem.webkitExitFullscreen) { /* Safari */
+      elem.webkitExitFullscreen();
+    } else if (elem.msExitFullscreen) { /* IE11 */
+      elem.msExitFullscreen();
     }
+
+
 
   }
   

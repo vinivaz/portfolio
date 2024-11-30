@@ -95,7 +95,7 @@ html
   }
   
   .post-exemple .subtitle_box {
-      margin: 9px 0 0 0;
+    margin: 9px 0 0 0;
   }
   
   .post-exemple .subtitle {
@@ -143,6 +143,8 @@ html
     align-items: center;
     position: relative;
     border: solid 1px #ddd;
+    border-radius: 11px;
+    overflow: hidden;
   }
 
   #post-content .txt{

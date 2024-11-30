@@ -122,6 +122,18 @@ const useResizeComponent = (app, parentId = "main") => {
         width: appWidth,
         height: appHeight
       })
+
+      // setWindowData({
+      //   width: appWidth,
+      //   height: appHeight
+      // })
+
+      // if(appWindow.classList.contains("fullscreen"))return;
+
+      // appWindow.style.width = appWidth + "px";
+      // appWindow.style.height = appHeight + "px";
+
+
     }
 
     const centerApp = () => {
@@ -174,6 +186,19 @@ const useResizeComponent = (app, parentId = "main") => {
 
       handleSize()
     }
+
+    // the problems is when the app goes from mobile to
+    // desktop, the appWindow loses its previous metrics
+
+
+    // const handleResize = () => {
+    //   if(!isMobile() && appWindow.classList.contains("fullscreen")){
+    //     // dispatch(minimizeAll())
+    //     return;
+    //   }
+
+    //   handleSize()
+    // }
 
     const canResize = () => {
       if(appWindow.classList.contains("fullscreen") || isMobile()){
