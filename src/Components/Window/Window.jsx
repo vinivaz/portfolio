@@ -71,7 +71,6 @@ const Window = ({app, children}) => {
         dispatch(setAppFullscreen({app}))
       }
     }
-    console.log(app)
   },[app])
   
 

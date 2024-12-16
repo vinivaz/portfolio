@@ -144,7 +144,7 @@ html
     position: relative;
     border: solid 1px #ddd;
     border-radius: 11px;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
 
   #post-content .txt{

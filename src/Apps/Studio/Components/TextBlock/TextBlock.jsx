@@ -39,7 +39,7 @@ const TextBlock = ({block}) => {
       text,
       {
         ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'br', 'ul', 'li', 'ol',
-          'b', 'q', 'div', 'p', 'a', 'i', 'span', 'u', 's', 'blockquote'
+          'b', 'strong', 'em', 'q', 'div', 'p', 'a', 'i', 'span', 'u', 's', 'blockquote'
         ],
         ALLOWED_ATTR: ['style', 'href', 'rel', 'target']
       }

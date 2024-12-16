@@ -272,9 +272,12 @@
 }
 
 .post .post_body .block img{
+  object-fit: contain;
   width: 100%;
+  max-height: 396px;
   margin-bottom: 7px;
 }
+
 
 .post .post_body .img .image_description{
   font-size: 2.4em;

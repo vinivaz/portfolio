@@ -6,10 +6,6 @@ const initialState = {
   deletingBlock: null,
   creatingTopic: null,
   visualizingPost: false,
-  topics: [
-    "NOTÍCIA",
-    "MÚSICA"
-  ],
   // topics: [
   //   {
   //     name: "NOTÍCIA",
@@ -20,76 +16,111 @@ const initialState = {
   //     color: "blue"
   //   },
   // ],
-  topic: "NOTÍCIA",
-  title: 'Dive deep into the Ghibli’s universe.',
-  subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
-  date: '21 de Novembro, 2024',
-  blocks: [
-    {
-      id: "1",
-      type: "img",
-      url: "/studio/totoro_cropped_a.gif",
-      credits: {
-        content: "currents",
-        link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"
-      },
-      description: "From the movie: My Neighbor Totoro."
-    },
-    {
-      id: "2",
-      type: 'text',
-      content: "<h3>My Neighbour Totoro</h3><br/> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,  , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet."
-    },
-    {
-      id: "3",
-      type: "img",
-      url: '/studio/Totoro2.png',
-      credits: {
-        content: "currents",
-        link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"
-      },
-      description: "the"
-      // credits: {
-      //   content: 'lady gaga',
-      //   link: 'abubleh'
-      // },
-      // description: 'Lady Gaga'
-      // url: 'https://i.pinimg.com/564x/eb/00/c1/eb00c1980089fd880366bf47018eddef.jpg'
-    },
-    {
-      id: "9",
-      type: 'text',
-      content: "<h3>Stunishing landscapes</h3><br/> consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur"
-    },
-    {
-      id: "4",
-      type: "yt-embed",
-      content: "NMRhx71bGo4",
-    },
-    {
-      id: "5",
-      content: "1854264521168154650",
-      type: "tt-embed",
-      _id: "67345bc531a55b2d24726e9f"
-    },
+  topics: [
+    "NOTÍCIA",
+    "MÚSICA"
+  ],
+  post: {
+    topic: "NOTÍCIA",
+    title: "",
+    subtitle: "",
+    date: '21 de Novembro, 2024',
+    blocks: []
+  }
+  // post: {
+  //   topic: "NOTÍCIA",
+  //   title: 'Dive deep into the Ghibli’s universe.',
+  //   subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
+  //   date: '21 de Novembro, 2024',
+  //   blocks: [
+  //     {
+  //       id: "1",
+  //       type: "img",
+  //       url: "/studio/totoro_cropped_a.gif",
+  //       credits: {
+  //         content: "currents",
+  //         link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"
+  //       },
+  //       description: "From the movie: My Neighbor Totoro."
+  //     },
+  //     {
+  //       id: "2",
+  //       type: 'text',
+  //       content: "<p>Fundado em 1985 no Japão por Hayao Miyazaki, Isao Takahata e Toshio Suzuki, o Estúdio Ghibli é amplamente considerado um dos maiores criadores de animações do mundo. Com um estilo artístico único, histórias profundas e personagens inesquecíveis, o estúdio se destaca por transformar temas complexos em narrativas encantadoras que falam tanto com crianças quanto com adultos.</p><p><br/></p><p>De obras icônicas como Meu Amigo Totoro e A Viagem de Chihiro até histórias emocionantes como Túmulo dos Vagalumes, cada filme carrega um pedaço do coração de seus criadores e deixa uma marca duradoura no público. O Estúdio Ghibli não apenas cria filmes; ele molda uma visão de mundo. Suas animações são aclamadas por celebrar a conexão entre humanos e a natureza, explorar temas como coragem, crescimento e identidade, e abraçar a complexidade da moralidade nos personagens. Além disso, o estúdio ajudou a levar a animação japonesa a um público global. A Viagem de Chihiro foi o primeiro filme de anime a ganhar um Oscar, solidificando o Ghibli como uma força criativa respeitada internacionalmente.</p>"
+  //     },
+  //     {
+  //       id: "3",
+  //       type: "img",
+  //       url: '/studio/totoro2_cropped_a.gif',
+  //       credits: {
+  //         content: "currents",
+  //         link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"
+  //       },
+  //       description: "the"
+  //       // credits: {
+  //       //   content: 'lady gaga',
+  //       //   link: 'abubleh'
+  //       // },
+  //       // description: 'Lady Gaga'
+  //       // url: 'https://i.pinimg.com/564x/eb/00/c1/eb00c1980089fd880366bf47018eddef.jpg'
+  //     },
+  //     {
+  //       id: "9",
+  //       type: 'text',
+  //       content: "<h3>Stunishing landscapes</h3><br/> consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur"
+  //     },
+  //     {
+  //       id: "11",
+  //       type: "img",
+  //       url: '/studio/chihiro_cropped_gif_a.gif',
+  //       credits: {
+  //         content: "currents",
+  //         link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"
+  //       },
+  //       description: "the"
+  //       // credits: {
+  //       //   content: 'lady gaga',
+  //       //   link: 'abubleh'
+  //       // },
+  //       // description: 'Lady Gaga'
+  //       // url: 'https://i.pinimg.com/564x/eb/00/c1/eb00c1980089fd880366bf47018eddef.jpg'
+  //     },
+  //     {
+  //       id: "10",
+  //       type: 'text',
+  //       content: "consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur"
+  //     },
+  //     {
+  //       id: "4",
+  //       type: "yt-embed",
+  //       content: "NMRhx71bGo4",
+  //     },
+  //     {
+  //       id: "5",
+  //       content: "1854264521168154650",
+  //       type: "tt-embed",
+  //       _id: "67345bc531a55b2d24726e9f"
+  //     },
 
-    {
-      id: "6",
-      type: 'tt-embed',
-      content: '1530590558959198208',
+  //     {
+  //       id: "6",
+  //       type: 'tt-embed',
+  //       content: '1530590558959198208',
 
-    },
-    {
-      id: "7",
-      type: 'text',
-      content: 'Two years ago we set out to create new, bold makeup that is supercharged with the worlds most innovative skincare ingredients.  Im proud that @hauslabs is launching a new makeup line that we believe represents the  future of clean artistry.  I hope we change your perception of what clean makeup can be, and that you will love our products as much as I do.'
-    },
-    {
-      id: "8",
-      type: 'yt-embed',
-      content: 'ohs0a-QnFF4'
-    },
-  ]
+  //     },
+  //     {
+  //       id: "7",
+  //       type: 'text',
+  //       content: 'Two years ago we set out to create new, bold makeup that is supercharged with the worlds most innovative skincare ingredients.  Im proud that @hauslabs is launching a new makeup line that we believe represents the  future of clean artistry.  I hope we change your perception of what clean makeup can be, and that you will love our products as much as I do.'
+  //     },
+  //     {
+  //       id: "8",
+  //       type: 'yt-embed',
+  //       content: 'ohs0a-QnFF4'
+  //     },
+  //   ]
+  // }
+  
 }
 
 const postSlice = createSlice({
@@ -98,30 +129,27 @@ const postSlice = createSlice({
   reducers: {
     setPost: (state, action) => {
       const postChanges = action.payload;
-      state = {
-        ...state,
-        ...postChanges
-      }
+      state.post = postChanges;
 
       console.log(postChanges)
     },
     setTopic: (state, action) => {
-      state.topic = action.payload;
+      state.post.topic = action.payload;
     },
     setTitle: (state, action) => {
-      state.title = action.payload;
+      state.post.title = action.payload;
       console.log(action.payload)
     },
     setSubtitle: (state, action) => {
-      state.subtitle = action.payload;
+      state.post.subtitle = action.payload;
       console.log(action.payload)
     },
     setBlocks: (state, action) => {
-      state.blocks = action.payload;
+      state.post.blocks = action.payload;
     },
     setBlock: (state, action) => {
       const {blockId, modifiedBlock} = action.payload;
-      state.blocks = state.blocks.map((singleBlock) => {
+      state.post.blocks = state.post.blocks.map((singleBlock) => {
         if(singleBlock.id === blockId){
           return modifiedBlock;
         }else{
@@ -141,7 +169,7 @@ const postSlice = createSlice({
         }
       )
 
-      state.blocks = state.blocks.map((singleBlock) => {
+      state.post.blocks = state.post.blocks.map((singleBlock) => {
         if(singleBlock.id === block.id){
           return {
             ...singleBlock,
@@ -154,7 +182,7 @@ const postSlice = createSlice({
     },
     setImageBlock: (state, action) => {
       const {blockId, modifiedBlock} = action.payload;
-      state.blocks = state.blocks.map((singleBlock) => {
+      state.post.blocks = state.post.blocks.map((singleBlock) => {
         if(singleBlock.id === blockId){
           return modifiedBlock;
         }else{
@@ -167,7 +195,7 @@ const postSlice = createSlice({
     },
     deleteBlock: (state, action) => {
       const block = action.payload;
-      state.blocks = state.blocks.filter((singleBlock) => {
+      state.post.blocks = state.post.blocks.filter((singleBlock) => {
         return singleBlock.id !== block.id
       })
     },
@@ -190,8 +218,8 @@ const postSlice = createSlice({
           url: "",
           id: v4().toString(),
           credits:{
-            content: "currents",
-            link: "https://www.youtube.com/watch?v=NMRhx71bGo4&list=PL81_CtYCym28qkVe3nVMRG7hMR5_Ky3Hf"
+            content: "",
+            link: ""
           },
           description: ""
         }
@@ -212,9 +240,9 @@ const postSlice = createSlice({
           id: v4().toString()
         }
       }
-
-      state.blocks = [
-        ...state.blocks,
+      console.log(newBlock)
+      state.post.blocks = [
+        ...state.post.blocks,
         newBlock
       ]
     },

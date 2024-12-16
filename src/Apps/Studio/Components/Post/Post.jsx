@@ -51,7 +51,7 @@ const BlocksRender = ({block}) => {
 
 const Post = () => {
 
-  const { topic, title, subtitle, date, blocks} = useSelector((state) => state.post)
+  const { topic, title, subtitle, date, blocks} = useSelector((state) => state.post.post)
   const generateFakeItems = (count) => {
     return Array.from({ length: count }, (_, index) => ({
       id: index,

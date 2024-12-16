@@ -108,7 +108,7 @@ const BlockMapHandler = ({ index, block }) => {
 };
 
 const BlocksMap = () => {
-  const { blocks } = useSelector((state) => state.post);
+  const { blocks } = useSelector((state) => state.post.post);
 
   const dispatch = useDispatch();
 

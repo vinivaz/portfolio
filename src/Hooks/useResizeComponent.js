@@ -9,11 +9,20 @@ const useResizeComponent = (app, parentId = "main") => {
   const threshold = 700;
 
   const screenHeightPercentage = (percentage) => {
-    return percentage * window.innerHeight / 100
+    // return percentage * window.innerHeight / 100
+
+    const desktopElement = document.getElementById("desktop")
+    
+
+    return percentage * desktopElement.offsetHeight / 100
   }
 
   const screenWidthPercentage = (percentage) => {
-    return percentage * window.innerWidth / 100
+    // return percentage * window.innerWidth / 100
+
+
+    const desktopElement = document.getElementById("desktop")
+    return percentage * desktopElement.offsetWidth / 100
   }
 
 
@@ -98,8 +107,14 @@ const useResizeComponent = (app, parentId = "main") => {
     */
     const positionElement = (width, height) => {
 
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
+      // const windowWidth = window.innerWidth;
+      // const windowHeight = window.innerHeight;
+
+      const desktopElement = document.getElementById("desktop")
+      
+      const windowWidth = desktopElement.offsetWidth;
+      const windowHeight = desktopElement.offsetHeight;
+
 
       let appWidth = width;
       let appHeight = height;

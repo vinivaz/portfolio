@@ -17,8 +17,12 @@ import Navbar from "./Components/Navbar/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
+//Database
+import { postsData } from "./Database/postsData";
+
 // Redux
 import {
+  setPost,
   setTopic,
   setTitle,
   setSubtitle,
@@ -37,21 +41,31 @@ import Post from "./Components/Post/Post";
 import Home from "./Components/Home/Home";
 
 const Studio = () => {
+
+  const posts = postsData()
   const { apps } = useSelector(state => state.app);
   const { studio_pop } = apps;
   const { time } = useSelector(state => state.system)
   const {
-    topic,
     topics,
-    title,
-    subtitle,
-    blocks,
     deletingBlock,
     creatingTopic,
-    visualizingPost,
+    visualizingPost
   } = useSelector(state => state.post);
+
+  const {
+    topic,
+    title,
+    subtitle,
+    blocks
+  } = useSelector(state => state.post.post);
    
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setPost(posts[3]))
+    console.log(posts[3])
+  },[])
 
   const handleClick = (e) => {
     e.target.setAttribute("contentEditable", true);
@@ -117,7 +131,15 @@ const Studio = () => {
         <div className="post_tools">
 
         <div className="finish-section post-editor">
-              <button className="save">
+              <button
+                className="save"
+                onClick={() => console.log({
+                  topic,
+                  title,
+                  subtitle,
+                  blocks
+                })}
+              >
                 <img src="/studio/save-icon.svg" />
               </button>
               <button
@@ -267,6 +289,7 @@ const Studio = () => {
                 key={block.id}
                 id={block.id +"-vessel"}
                 className="block-vessel"
+                onClick={() => console.log(block)}
               >
                 <BlockHandler block={block}/>
               </div> 

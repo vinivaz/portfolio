@@ -264,22 +264,40 @@ const ImageBlock = ({ block }) => {
               </div>
             </div>
             {block.credits.content && block.credits.link ?
-            <div className="picture_link">
-              <a
-                href={block.credits.url}
-                target="blank"
-              >
-                {block.credits.content}
-              </a>
-              <button
-                onClick={handleRemoveLink}
-              >
-                <img src="/studio/trash_icon.svg"/>
-              </button>
-            </div>
+              <div className="picture_link">
+                <a
+                  href={block.credits.url}
+                  target="blank"
+                >
+                  {block.credits.content}
+                </a>
+                <button
+                  onClick={handleRemoveLink}
+                >
+                  <img src="/studio/trash_icon.svg"/>
+                </button>
+              </div>
             :
-            ""        
+              ""        
             }
+          </div>
+          <div className="autoplay_handler">
+            <div className="autoplay_hint">
+              <img src="/studio/autoplay_icon.png" alt="autoplay icon"/>
+              <span>Add to the home page autoplay:</span>
+            </div>
+
+            <input
+              type="checkbox"
+              checked={block.autoplay}
+              onChange={(e) => {
+                const modifiedBlock = {
+                  ...block,
+                  autoplay: e.target.checked,
+                }
+                dispatch(setImageBlock({blockId: block.id, modifiedBlock}))
+              }}
+            />
           </div>
 
 

@@ -1,5 +1,5 @@
 // Styles
-import "./VideoBlock.jsx";
+import "./VideoBlock.css";
 
 // Hooks
 import { useDispatch } from "react-redux";
