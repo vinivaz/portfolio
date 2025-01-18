@@ -7,6 +7,7 @@ import studio_pop_logo from "/studio/studio_pop_icon.png";
 import {isMobile } from "../../services/appService";
 
 import { createSlice } from "@reduxjs/toolkit";
+import { previous } from "slate";
 
 const initialState = {
   mobile_settings: {
@@ -34,6 +35,7 @@ const initialState = {
       bottom: undefined,
       left: undefined,
       page: "rooms",
+      previous_page: "rooms",
       size_class: ""
     },
     "lih": {
@@ -56,6 +58,7 @@ const initialState = {
       bottom: undefined,
       left: undefined,
       page: "",
+      previous_page: "",
       size_class: ""
     },
     "portfolio": {
@@ -77,7 +80,8 @@ const initialState = {
       right: undefined,
       bottom: undefined,
       left: undefined,
-      page: "rooms",
+      page: "",
+      previous_page: "",
       size_class: ""
     },
     "studio_pop": {
@@ -100,6 +104,7 @@ const initialState = {
       bottom: undefined,
       left: undefined,
       page: "home",
+      previous_page: "",
       size_class: ""
     }
   }
@@ -305,6 +310,8 @@ const appSlice = createSlice({
     },
     setPage: (state, action) => {
       const { name, page } = action.payload;
+      
+      state.apps[name].previous_page = state.apps[name].page,
 
       state.apps[name].page = page;
     },

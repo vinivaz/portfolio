@@ -52,20 +52,20 @@ const Studio = () => {
     creatingTopic,
     visualizingPost
   } = useSelector(state => state.post);
-
+  const post = useSelector(state => state.post.post)
   const {
     topic,
     title,
     subtitle,
     blocks
-  } = useSelector(state => state.post.post);
+  } = post;
    
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setPost(posts[3]))
-    console.log(posts[3])
-  },[])
+    dispatch(setPost(post))
+    console.log(post)
+  },[post])
 
   const handleClick = (e) => {
     e.target.setAttribute("contentEditable", true);

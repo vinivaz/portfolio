@@ -6,10 +6,83 @@
   background-color: white;
   z-index: 2;
   display: flex;
-
+  overflow-y: auto;
   align-items: center;
   flex-direction: column;
   padding-bottom: 50px;
+
+  color: black;
+}
+
+.home_page::-webkit-scrollbar-track {
+  background-color: #F4F4F4;
+}
+
+.home_page::-webkit-scrollbar {
+  width: 6px;
+  background: #F4F4F4;
+}
+
+.home_page::-webkit-scrollbar-thumb {
+  background: #dad7d7;
+}
+
+ .post_click_background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 50%;
+  top: 0;
+  left: 0;
+  z-index: 199;
+}
+
+ .post_click_screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 270px;
+  height: 100%;
+  max-height: 200px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-top: solid 25px black;
+  border-radius: 15px;
+  background-color: aliceblue;
+  z-index: 200;
+}
+
+.post_click_screen .close_btn span{
+  position: absolute;
+  font-size: 3em;
+  text-shadow: 0 0 1px black ;
+  right: 20px;
+  top: 9px;
+}
+
+.post_click_screen span{
+  color: #4a4a4a;
+  font-weight: 600;
+  font-size: 2.6em;
+  margin: 9px 0;
+}
+
+.post_click_screen .options{
+
+}
+
+.post_click_screen .options button{
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: solid 1px #ddd;
+  font-weight: bold;
+  color: #2e2e2e;
+
 }
 
 .nm .home_page,
@@ -235,13 +308,13 @@
 }
 
 .home_page .highlights .cards{
-  padding: 23px;
+  /* padding: 23px; */
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   /* justify-content: flex-start; */
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   gap: 16px;
   max-width: 960px;
 
@@ -311,6 +384,14 @@
 
   font-size: 2.7em;
   font-weight: bold;
+  display: box;
+  display: -webkit-box;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .home_page .highlights .hl_card .card_text .data{
@@ -326,6 +407,14 @@
   margin-top: 5px;
   max-height: 54px;
   overflow: hidden;
+  
+  display: box;
+  display: -webkit-box;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
   /* margin: 5px; */
 }
 
@@ -393,9 +482,16 @@
 
 }
 
-.home_page .middle_content .recents .rc_card .card_cover{
+/* .home_page .middle_content .recents .rc_card .card_cover{
   width: 100%;
   max-width: 342px;
+  display: flex;
+  flex-direction: row;
+} */
+
+.home_page .middle_content .recents .rc_card .card_cover{
+  width: 100%;
+  max-width: unset;
   display: flex;
   flex-direction: row;
 }
@@ -405,20 +501,28 @@
   max-width: unset;
 }
 
-.home_page .middle_content .recents .rc_card .card_text{
+/* .home_page .middle_content .recents .rc_card .card_text{
   width: 100%;
   max-width: 259px;
   padding: 10px;
-}
+} */
 
-.md .home_page .middle_content .recents .rc_card .card_text,
-.sm .home_page .middle_content .recents .rc_card .card_text{
+.home_page .middle_content .recents .rc_card .card_text{
   width: 100%;
   max-width: 259px;
   padding: 10px;
   position: absolute;
   color: white;
 }
+
+/* .md .home_page .middle_content .recents .rc_card .card_text,
+.sm .home_page .middle_content .recents .rc_card .card_text{
+  width: 100%;
+  max-width: 259px;
+  padding: 10px;
+  position: absolute;
+  color: white;
+} */
 
 .home_page .middle_content .recents .rc_card .card_text .topic{
   font-size: 2.3em;
@@ -430,16 +534,24 @@
 }
 
 
-.home_page .middle_content .recents .rc_card .card_cover img{
+/* .home_page .middle_content .recents .rc_card .card_cover img{
   width: 100%;
   height: 258px;
   min-height: 258px;
   max-width: 377px;
   object-fit: cover;
-}
+} */
 
-.md .home_page .middle_content .recents .rc_card .card_cover img,
+/* .md .home_page .middle_content .recents .rc_card .card_cover img,
 .sm .home_page .middle_content .recents .rc_card .card_cover img {
+  width: 100%;
+  height: 285px;
+  min-height: 258px;
+  max-width: unset;
+  object-fit: cover;
+} */
+
+.home_page .middle_content .recents .rc_card .card_cover img {
   width: 100%;
   height: 285px;
   min-height: 258px;

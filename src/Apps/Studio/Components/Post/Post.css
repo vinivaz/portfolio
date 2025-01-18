@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  overflow-y: auto;
+  margin-top: 19px;
 }
 
 .md .post_container,
@@ -378,9 +380,17 @@
 }
 
 .post_container .more_content .more_posts .mini_post .mini_post_title{
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 700;
   color: #000000;
+  display: box;
+  display: -webkit-box;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .post_container .more_content .more_posts .mini_post .mini_post_data{

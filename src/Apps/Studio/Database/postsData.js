@@ -2,10 +2,11 @@ export const postsData = () => {
   return [
         {
           id: "1",
-          topic: "NOTÍCIA",
+          topic: "Fantasia",
           title: 'Dive deep into the Ghibli’s universe.',
           subtitle: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
           date: '21 de Novembro, 2024',
+          cover_images: [],
           blocks: [
             {
               id: "1",
@@ -76,10 +77,11 @@ export const postsData = () => {
         },
         {
           id: "2",
-          topic: "NOTÍCIA",
+          topic: "Fantasia",
           title: 'Dive deep into the Ghibli’s universe.',
           subtitle: "Uma Jornada pelo Mundo de Hyrule e Além.",
           date: '21 de Novembro, 2024',
+          cover_images: [],
           blocks: [
             {
               type: "img",
@@ -177,10 +179,11 @@ export const postsData = () => {
         },
         {
           id: "3",
-          topic: "Fantasy",
+          topic: "Fantasia",
           title: 'Arcane: A Revolução na Animação e na Narrativa de Games',
           subtitle: "Uma verdadeira obra de arte e um show de animações espetacular.",
           date: '21 de Novembro, 2024',
+          cover_images: [],
           blocks: [
             {
               "type": "img",
@@ -190,7 +193,8 @@ export const postsData = () => {
                   "content": "",
                   "link": ""
               },
-              "description": ""
+              "description": "",
+              autoplay: true,
             },
             {
               "type": "text",
@@ -205,7 +209,8 @@ export const postsData = () => {
                   "content": "",
                   "link": ""
               },
-              "description": ""
+              "description": "",
+              autoplay: true,
             },
             {
               "type": "text",
@@ -220,7 +225,8 @@ export const postsData = () => {
                   "content": "",
                   "link": ""
               },
-              "description": ""
+              "description": "",
+              autoplay: true,
             },
               {
                 "type": "text",
@@ -235,7 +241,8 @@ export const postsData = () => {
                   "content": "",
                   "link": ""
               },
-              "description": ""
+              "description": "",
+              autoplay: true,
             },
             {
               "type": "text",
@@ -281,6 +288,7 @@ export const postsData = () => {
           title: "Pinóquio de Guillermo del Toro: Um Grande Feito de Animação Stop Motion e Arte",
           subtitle: "Uma verdadeira obra de arte e um show de animações espetacular.",
           date: '21 de Novembro, 2024',
+          cover_images: [],
           blocks: [
             {
               "type": "img",
@@ -290,7 +298,8 @@ export const postsData = () => {
                   "content": "",
                   "link": ""
               },
-              "description": ""
+              "description": "",
+              autoplay: true,
             },
             {
               "type": "text",
@@ -305,7 +314,8 @@ export const postsData = () => {
                   "content": "",
                   "link": ""
               },
-              "description": ""
+              "description": "",
+              autoplay: true,
             },
             {
               "type": "text",
@@ -330,7 +340,8 @@ export const postsData = () => {
                   "content": "",
                   "link": ""
               },
-              "description": ""
+              "description": "",
+              autoplay: true,
             },
             {
               "type": "text",
@@ -345,6 +356,74 @@ export const postsData = () => {
             {
               "type": "text",
               "content": "<p>Com <em>Pinóquio</em>, Guillermo del Toro reafirma sua posição como um mestre contador de histórias e entrega um presente para os amantes da animação e do cinema. Mais do que uma adaptação, o filme é uma celebração da arte, da imperfeição e da humanidade.</p>",
+              "id": "a9d48059-69e9-4af6-9f7c-372b38877dad"
+            }
+          ]
+        },
+        {
+          id: "5",
+          topic: "Música",
+          title: "Currents: A obra de Tame Impala",
+          subtitle: "Como Kevin Parker produziu um dos mais marcantes albuns indies",
+          date: '21 de Novembro, 2024',
+          cover_images: [],
+          blocks: [
+            {
+              "type": "img",
+              "url": "/studio/kevin_parker_neil_krug.jpg",
+              "id": "92cce4e8-c247-4023-bdcd-02092b6081e9",
+              "credits": {
+                  "content": "",
+                  "link": ""
+              },
+              "description": "Kevin Parker (Foto: Neil Krug)",
+              autoplay: true,
+            },
+            {
+              "type": "text",
+              "content": "<p>O Tame Impala, projeto liderado pelo multi-instrumentista e produtor Kevin Parker, é um dos maiores nomes do cenário indie atual. Nascido em 20 de janeiro de 1986, em Sydney, Austrália, Kevin cresceu em Perth, onde desenvolveu sua paixão pela música. Desde jovem, ele explorava diferentes instrumentos e sonoridades, muito inspirado por seu pai, Jerry Parker, que também tinha uma forte ligação com a música. Essa influência paterna foi fundamental para moldar o talento de Kevin, que mais tarde conquistaria o mundo com sua criatividade sonora.</p>",
+              "id": "47b3aebd-5052-4770-a989-05a5d96e563a"
+            },
+            {
+              "type": "text",
+              "content": "<h4><strong>Os Primeiros Passos: Álbuns que Definiram o Caminho</strong></h4><p><br></p><p>Antes do aclamado <em>Currents</em>, o Tame Impala lançou dois álbuns que rapidamente conquistaram crítica e público. <em>Innerspeaker</em> (2010) apresentou um som psicodélico repleto de guitarras distorcidas e camadas instrumentais, evocando as vibrações da era de ouro do rock dos anos 60 e 70. Suas letras falam de introspecção e autodescoberta, estabelecendo a assinatura sonora de Parker.</p><p>Já <em>Lonerism</em> (2012) manteve as raízes psicodélicas, mas trouxe mais elementos de sintetizadores e melodias acessíveis, explorando temas como isolamento e a luta por conexão em um mundo cada vez mais caótico. Com esses dois álbuns, Kevin Parker cimentou sua reputação como um visionário musical, mas ele estava apenas começando a expandir seu alcance criativo.</p>",
+              "id": "83695fd9-f38f-4e8e-9ed2-7101c8daab88"
+            },
+            {
+              "type": "img",
+              url: "/studio/currents.jpg",
+              "id": "bbb0d974-2bec-4a43-a36d-e602041e6062",
+              "credits": {
+                  "content": "Currents",
+                  "link": "https://open.spotify.com/intl-pt/artist/5INjqkS1o8h1imAzPqGZBb?si=DDPdDPSoRlGeR8jRUWxBGg"
+              },
+              "description": "",
+              autoplay: true,
+            },
+            {
+              "type": "text",
+              "content": "<h4><strong>A Revolução Sonora de <em>Currents</em></strong></h4><p><br></p><p>Lançado em 2015, <em>Currents</em> marcou uma verdadeira virada na sonoridade do Tame Impala. Deixando de lado as guitarras dominantes, Parker mergulhou fundo em sintetizadores, linhas de baixo pulsantes e batidas eletrônicas, criando um álbum que misturava psicodelia, pop, R&amp;B e dance music. O projeto, inteiramente escrito, produzido e tocado por Kevin Parker, reflete temas de transformação pessoal, relacionamentos e mudanças de perspectiva.</p><p><br></p><p>Faixas como <em>Let It Happen</em> e <em>The Less I Know the Better</em> se tornaram sucessos instantâneos, mostrando o domínio de Parker em criar músicas cativantes e emocionalmente ressonantes. <em>Currents</em> foi amplamente aclamado pela crítica e conquistou diversos prêmios, além de expandir ainda mais a base de fãs do Tame Impala, consolidando o projeto como um dos mais influentes de sua geração.</p>",
+              "id": "035b7b32-0a43-4cf5-afcd-480de62c9e84"
+            },
+            {
+              "type": "img",
+              "url": "/studio/currents_2.jpg",
+              "id": "875f0590-2d24-4739-b834-6e10140eeae8",
+              "credits": {
+                  "content": "",
+                  "link": ""
+              },
+              "description": "",
+              autoplay: true,
+            },
+            {
+              "type": "text",
+              "content": "<h4><strong>O Último Capítulo: <em>The Slow Rush</em></strong></h4><p><br></p><p>Em 2020, Kevin Parker lançou <em>The Slow Rush</em>, o quarto álbum do Tame Impala. O trabalho continuou explorando temas de tempo e mortalidade, mas com uma produção ainda mais polida e ambiciosa. Faixas como <em>Borderline</em> e <em>Lost in Yesterday</em> mostraram o amadurecimento musical de Parker, enquanto a recepção calorosa do público e da crítica solidificou sua posição como um dos maiores artistas da atualidade.</p>",
+              "id": "2de8f57f-be4a-46f7-8afb-70fa2fc0ee24"
+            },
+            {
+              "type": "text",
+              "content": "<h4><strong>Além do Tame Impala</strong></h4><p><br></p><p>Kevin Parker não se limitou apenas ao Tame Impala. Ele colaborou com diversos artistas renomados, incluindo Lady Gaga, Travis Scott, The Weeknd e Mark Ronson, emprestando sua visão única para diferentes gêneros musicais. Essas parcerias mostram a versatilidade de Parker como produtor e compositor, expandindo sua influência muito além do cenário indie.</p><p>Com uma carreira repleta de marcos e um talento inegável para criar experiências sonoras únicas, Kevin Parker continua a redefinir o que significa ser um artista no século 21. Seja através do Tame Impala ou de suas colaborações, ele permanece no centro de uma revolução musical que combina introspecção, inovação e arte.</p>",
               "id": "a9d48059-69e9-4af6-9f7c-372b38877dad"
             }
           ]

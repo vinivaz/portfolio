@@ -34,6 +34,10 @@ const TextBlock = ({block}) => {
 
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    setValue(block.content)
+  },[block])
+
   const sanitizer = (text) => {
     const sanitizedContent = DOMPurify.sanitize(
       text,

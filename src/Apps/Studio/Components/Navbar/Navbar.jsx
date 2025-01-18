@@ -38,8 +38,7 @@ const Navbar = () => {
             className="return"
             onClick={() => dispatch(setPage({
               name: "studio_pop",
-              page: "studio"
-
+              page: studio_pop.previous_page
             }))}
           >
             Return

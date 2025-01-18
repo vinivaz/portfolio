@@ -235,7 +235,7 @@ html
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     background-color: white;
     font-size: 32.5%;
     margin-bottom: 40px;

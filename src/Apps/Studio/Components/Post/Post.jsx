@@ -3,12 +3,15 @@ import "./Post.css"
 
 // Hooks
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 // Components
 import { Tweet } from 'react-tweet';
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
+import ImageSlide from "../ImageSlide/ImageSlide";
 
-
+// Database
+import { postsData } from "../../Database/postsData";
 
 const BlocksRender = ({block}) => {
   switch (block.type) {
@@ -51,7 +54,11 @@ const BlocksRender = ({block}) => {
 
 const Post = () => {
 
+  const [posts, setPosts] = useState()
+  
   const { topic, title, subtitle, date, blocks} = useSelector((state) => state.post.post)
+  
+  
   const generateFakeItems = (count) => {
     return Array.from({ length: count }, (_, index) => ({
       id: index,
@@ -59,6 +66,22 @@ const Post = () => {
       text: `Item ${index + 1}`,
     }));
   };
+
+  useEffect(() => {
+    setPosts(postsData().map((singlePost) => {
+        singlePost.blocks.map((block, index) => {
+          if(block.type == "img" && block.autoplay){
+            singlePost.cover_images = [
+            ...singlePost.cover_images,
+            block.url
+            ]
+          }
+        })
+
+        return singlePost;
+    }))
+
+  },[])
 
   const items = generateFakeItems(10);
   
@@ -108,13 +131,15 @@ const Post = () => {
           <img src="/studio/ad_smartphone.svg" />
         </div>
         <div className="more_posts">
-          {items.map((item, index) => (
+          {posts && posts.map((post, index) => (
             <div key={index} className="mini_post">
-              <img src={item.image}/>
+              <ImageSlide
+                images={post.cover_images}
+              />
               <div className="mini_post_details">
-                <span className="mini_post_title">Totam rem aperiam</span>
-                <span className="mini_post_data">November 19th, 2023</span>
-                <span className="mini_post_subtitle">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</span>
+                <span className="mini_post_title">{post.title}</span>
+                <span className="mini_post_data">{post.date}</span>
+                <span className="mini_post_subtitle">{post.subtitle}</span>
               </div>
             </div>
           ))}

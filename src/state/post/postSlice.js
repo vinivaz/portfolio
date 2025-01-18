@@ -129,6 +129,8 @@ const postSlice = createSlice({
   reducers: {
     setPost: (state, action) => {
       const postChanges = action.payload;
+
+      
       state.post = postChanges;
 
       console.log(postChanges)
