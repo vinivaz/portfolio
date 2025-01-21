@@ -23,6 +23,8 @@ import { postsData } from "./Database/postsData";
 // Redux
 import {
   setPost,
+  setPosts,
+  savePost,
   setTopic,
   setTitle,
   setSubtitle,
@@ -42,30 +44,23 @@ import Home from "./Components/Home/Home";
 
 const Studio = () => {
 
-  const posts = postsData()
   const { apps } = useSelector(state => state.app);
   const { studio_pop } = apps;
   const { time } = useSelector(state => state.system)
   const {
+    post,
     topics,
     deletingBlock,
     creatingTopic,
-    visualizingPost
   } = useSelector(state => state.post);
-  const post = useSelector(state => state.post.post)
-  const {
-    topic,
-    title,
-    subtitle,
-    blocks
-  } = post;
+
+  const { topic, title, subtitle, blocks } = post;
    
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setPost(post))
-    console.log(post)
-  },[post])
+    dispatch(setPosts(postsData()))
+  },[])
 
   const handleClick = (e) => {
     e.target.setAttribute("contentEditable", true);
@@ -133,12 +128,15 @@ const Studio = () => {
         <div className="finish-section post-editor">
               <button
                 className="save"
-                onClick={() => console.log({
+                onClick={() => dispatch(savePost({
+                  id: post.id,
                   topic,
                   title,
                   subtitle,
-                  blocks
-                })}
+                  blocks,
+                  cover_images: []
+                }))
+              }
               >
                 <img src="/studio/save-icon.svg" />
               </button>

@@ -20,6 +20,7 @@ const initialState = {
     "NOTÍCIA",
     "MÚSICA"
   ],
+  posts: [],
   post: {
     topic: "NOTÍCIA",
     title: "",
@@ -134,6 +135,51 @@ const postSlice = createSlice({
       state.post = postChanges;
 
       console.log(postChanges)
+    },
+    setPosts: (state, action) => {
+      const posts = action.payload;
+
+      posts.map((singlePost) => {
+        singlePost.blocks.map((block) => {
+          if(block.type == "img" && block.autoplay){
+            singlePost.cover_images = [
+            ...singlePost.cover_images,
+            block.url
+            ]
+          }
+        })
+
+        return singlePost;
+      })
+
+      
+      state.posts = posts;
+
+      console.log(state.posts)
+    },
+    savePost: (state, action) => {
+      let postChanged = action.payload;
+      
+      postChanged.blocks.map((block) => {
+        if(block.type == "img" && block.autoplay){
+          postChanged.cover_images = [
+          ...postChanged.cover_images,
+          block.url
+          ]
+        }
+      })
+
+      const posts = state.posts
+      
+      state.posts = posts.map((singlePost) => {
+        if(singlePost.id == postChanged.id) {
+          return postChanged;
+        }else{
+          return singlePost;
+        }
+      });
+
+      console.log(postChanged)
     },
     setTopic: (state, action) => {
       state.post.topic = action.payload;
@@ -268,6 +314,8 @@ const postSlice = createSlice({
 
 export const {
   setPost,
+  setPosts,
+  savePost,
   setTitle,
   setSubtitle,
   setBlocks, 

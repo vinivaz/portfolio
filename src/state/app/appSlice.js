@@ -1,13 +1,13 @@
 // Img
 import logo from "/chat_logo.png";
-import lih_logo from "/lih_logo.png";
+// import lih_logo from "/lih_logo.png";
+import lih_logo from "/currents_logo.png";
 import portfolio_logo from "/portfolio_logo.png";
 import studio_pop_logo from "/studio/studio_pop_icon.png";
 
 import {isMobile } from "../../services/appService";
 
 import { createSlice } from "@reduxjs/toolkit";
-import { previous } from "slate";
 
 const initialState = {
   mobile_settings: {

@@ -3,7 +3,7 @@ import "./Home.css";
 
 // Hooks
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 // Redux
 import { setPage } from "../../../../state/app/appSlice";
@@ -12,39 +12,13 @@ import { setPost } from "../../../../state/post/postSlice";
 // Components
 import ImageSlide from "../ImageSlide/ImageSlide";
 
-//Database
-import { postsData } from "../../Database/postsData";
-
 
 const Home = () => {
-
+  const { posts } = useSelector((state) => state.post)
   const dispatch = useDispatch()
-  const [posts, setPosts] = useState()
+
   const [handlingPostClick, setHandlingPostClick] = useState()
 
-  // const posts = postsData()
-
-  useEffect(() => {
-    setPosts(postsData().map((singlePost) => {
-        singlePost.blocks.map((block, index) => {
-          if(block.type == "img" && block.autoplay){
-            singlePost.cover_images = [
-            ...singlePost.cover_images,
-            block.url
-            ]
-          }
-        })
-
-        return singlePost;
-    }))
-
-  },[])
-
-  useEffect(() => {
-  console.log(posts)
-  },[posts])
-
-  
   return (
     <>
       {handlingPostClick && handlingPostClick.showing ?
@@ -71,17 +45,6 @@ const Home = () => {
             <div className="options">
               <button
                 onClick={() => {
-                  dispatch(setPost(handlingPostClick.post))
-                  dispatch(setPage({
-                  name: "studio_pop",
-                  page: "studio"
-                  }))}
-                }
-              >
-                Editar
-              </button>
-              <button
-                onClick={() => {
                   dispatch(setPost(handlingPostClick.post));
                   dispatch(setPage({
                     name: "studio_pop",
@@ -91,6 +54,17 @@ const Home = () => {
               >
                 Ler
               </button>
+              <button
+                onClick={() => {
+                  dispatch(setPost(handlingPostClick.post))
+                  dispatch(setPage({
+                  name: "studio_pop",
+                  page: "studio"
+                  }))}
+                }
+              >
+                Editar
+              </button>
             </div>
 
           </div>
@@ -98,58 +72,48 @@ const Home = () => {
         : 
         ""      
         }
-      {posts && <div className="home_page">
-        
-        
-          <div className="hero">
-            <ImageSlide
-              images={posts[0].cover_images}
-            />
-            {/*
-            <ImageSlide
-              images={[
-                "/studio/pinocchio_ocean.gif",
-                "/studio/pinocchio_woods.gif",
-                "/studio/pinocchio_fire.gif",
-                "/studio/pinocchio_beach.gif",
-                "/studio/arcane_poster.png",
-                "/studio/piltover_overview.gif",
-                "/studio/zaun_artwork.png",
-                "/studio/jinx_fishbones.gif",
-                "/studio/arcane_jinx_blood_moon_gif.gif",
-                "/studio/ocarina_of_time_artwork.png",
-                "/studio/zelda_majoras_mask_artwork.png",
-                "studio/totoro_waiting_bus.gif",
-                "/studio/totoro_cropped_a.gif",
-                "/studio/totoro2_cropped_a.gif",
-                "/studio/chihiro_cropped_gif_a.gif"
-              ]}
-            />
-            */}
-            <div className="text">
-              <span className="category">Fantasy</span>
-              <h1>Dive deep into the Ghibli’s universe.</h1>
-              <h3>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</h3>
-              <div className="buttons">
-                <button>Read it</button>
-                <button
-                  onClick={() => dispatch(setPage({
+      {posts && posts.length > 0 && <div className="home_page">
+        <div className="hero">
+          <ImageSlide
+            images={posts[0].cover_images}
+          />
+          <div className="text">
+            <span className="category">{posts[0].topic}</span>
+            <h1>{posts[0].title}</h1>
+            <h3>{posts[0].subtitle}</h3>
+            <div className="buttons">
+              <button
+                onClick={() => {
+                  dispatch(setPost(posts[0]))
+                  dispatch(setPage({
+                    name: "studio_pop",
+                    page: "post"
+                  }))
+                }}
+              >
+                Ler
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(setPost(posts[0]))
+                  dispatch(setPage({
                     name: "studio_pop",
                     page: "studio"
-                  }))}
-                >
-                  Edit it
-                </button>
-              </div>
+                  }))
+                }}
+              >
+                Editar
+              </button>
             </div>
           </div>
+        </div>
         
-
         <div className="highlights">
-          <h4>Highlights</h4>
+          <h4>Recentes</h4>
           <div className="cards">
             {posts && posts.map((post) => (
               <div
+                key={post.id}
                 className="hl_card"
                 onClick={() => setHandlingPostClick({
                   showing: true,
@@ -171,36 +135,12 @@ const Home = () => {
               </div>
             </div>
             ))}
-            {/* <div className="hl_card">
-              <div className="card_cover">
-                <ImageSlide
-                  images={[
-                    "/studio/Main-Cast-Moon.png",
-                    "/studio/arcane_poster.png",
-                    "/studio/arcane_jinx_blood_moon_gif.gif",            
-                    "/studio/ocarina_of_time_artwork.png",
-                    "/studio/zelda_majoras_mask_artwork.png",
-                    "/studio/totoro_cropped_a.gif",
-                    "/studio/totoro2_cropped_a.gif",
-                    "/studio/chihiro_cropped_gif_a.gif"
-                  ]}
-                />
-                <span className="topic">Fantasy</span>
-              </div>
-              <div className="card_text">
-                <h3>Totam rem aperiam</h3>
-                <span className="data">November 19th, 2023</span>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
-              </div>
-            </div> */}
-
-            
           </div>
           
         </div>
         <div className="middle_content">
           <div className="recents">
-          <h4>Recents</h4>
+          <h4>Destaques</h4>
             <div
               className="rc_card"
               onClick={() => setHandlingPostClick({
@@ -277,6 +217,7 @@ const Home = () => {
         <div className="cards">
         {posts && posts.map((post) => (
           <div
+            key={post.id}
             className="hl_card"
             onClick={() => setHandlingPostClick({
               showing: true,

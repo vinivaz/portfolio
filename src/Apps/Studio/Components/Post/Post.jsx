@@ -10,8 +10,8 @@ import { Tweet } from 'react-tweet';
 import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 import ImageSlide from "../ImageSlide/ImageSlide";
 
-// Database
-import { postsData } from "../../Database/postsData";
+// Redux
+import { setPost } from "../../../../state/post/postSlice";
 
 const BlocksRender = ({block}) => {
   switch (block.type) {
@@ -54,41 +54,18 @@ const BlocksRender = ({block}) => {
 
 const Post = () => {
 
-  const [posts, setPosts] = useState()
-  
+  const { posts } = useSelector((state) => state.post)
   const { topic, title, subtitle, date, blocks} = useSelector((state) => state.post.post)
   
-  
-  const generateFakeItems = (count) => {
-    return Array.from({ length: count }, (_, index) => ({
-      id: index,
-      image: `/studio/image-icon-wide.svg`, // URL de imagem genérica
-      text: `Item ${index + 1}`,
-    }));
-  };
+  const dispatch = useDispatch()
 
-  useEffect(() => {
-    setPosts(postsData().map((singlePost) => {
-        singlePost.blocks.map((block, index) => {
-          if(block.type == "img" && block.autoplay){
-            singlePost.cover_images = [
-            ...singlePost.cover_images,
-            block.url
-            ]
-          }
-        })
+  const scrollToTop = () =>{
+    const scrollingElement = document.querySelector(".post_container");
+    scrollingElement.scrollTo({ top: 100, behavior: 'smooth' });
+  }
 
-        return singlePost;
-    }))
-
-  },[])
-
-  const items = generateFakeItems(10);
-  
   return (
     <div className="post_container">
-
-
       <div className="post">
         <div className="post_header">
           <span className="topic">{topic}</span>
@@ -100,30 +77,6 @@ const Post = () => {
           {blocks && blocks.map((block) => (
             <BlocksRender key={block.id} block={block}/>
           ))}
-          {/* <div className="block img">
-            <img src="/studio/Totoro1.png" alt="image block" />
-            <span className="image_description">From My neighbor Totoro</span>
-          </div>
-
-          <div className="block text">
-            My Neighbour Totoro
-
-
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-          </div>
-
-          <div className="block img">
-            <img src="/studio/Totoro2.png" alt="image block" />
-            <span className="image_description">From My neighbor Totoro</span>
-          </div>
-
-          <div className="block text">
-            My Neighbour Totoro
-
-
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-          </div> */}
-
         </div>
       </div>
       <div className="more_content">
@@ -132,7 +85,14 @@ const Post = () => {
         </div>
         <div className="more_posts">
           {posts && posts.map((post, index) => (
-            <div key={index} className="mini_post">
+            <div
+              onClick={() => {
+                scrollToTop()
+                dispatch(setPost(post))
+              }}
+              key={index}
+              className="mini_post"
+            >
               <ImageSlide
                 images={post.cover_images}
               />

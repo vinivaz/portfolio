@@ -637,6 +637,6 @@
 
 @media (max-width: 700px) {
   .home_page {
-    height: calc(100% - 101px);
+    /* height: calc(100% - 101px); */
   }
 }

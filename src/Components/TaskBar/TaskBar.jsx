@@ -81,11 +81,11 @@ const TaskBar = () => {
         </button>
       </nav>
 
-      <div className="system_start_button">
+      {/* <div className="system_start_button">
         <button>
 
         </button>
-      </div>
+      </div> */}
 
       <div className="desktop_search">
         <img src={desktop_search} alt="search icon" />

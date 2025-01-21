@@ -41,7 +41,7 @@ const Navbar = () => {
               page: studio_pop.previous_page
             }))}
           >
-            Return
+            Voltar
           </button>
         }
       </div>
