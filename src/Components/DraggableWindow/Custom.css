@@ -1,0 +1,15 @@
+.window_element .window-header{
+  background-color: black;
+}
+
+.window_element .window-header button{
+  background-color: transparent;
+  height: 35px;
+  border: none;
+  color: white;
+}
+
+.window_element .window-header .custom-actions button{
+  padding: 0 16px
+}
+

@@ -1,0 +1,83 @@
+#post-content .block-vessel  {
+  margin: 15px 0;
+}
+
+/* #post-content .block-vessel .txt {
+  
+  background-color: white;
+} */
+
+/* #post-content .block-vessel .txt .final-text{
+  outline: none;
+  border: solid 2px var(--block-color);
+  border-radius: 6px;
+  min-height: 70px;
+  padding: 8px;
+  width: 100%;
+  font-size: 2.9em
+} */
+
+
+
+/* #post-content .block-vessel .txt .block-ctrl button{
+  display: block;
+  
+  background-color: var(--block-color);
+  
+  border-radius: 3px 3px 0 0;
+  color: black;
+  padding: 6px 8px;
+} */
+
+
+
+
+#post-content .block-vessel .editing p{
+  /* border: solid 2px rgb(238, 238, 84);
+  border-radius: 6px; */
+  /* border-left: solid 2px rgb(238, 238, 84);
+  border-bottom: solid 2px rgb(238, 238, 84);
+  outline: none;*/
+}
+
+#post-content .block-vessel .editing .block-ctrl button{
+ 
+}
+
+.editor_input {
+
+}
+
+.ql-toolbar.ql-snow{
+  border-radius: 11px 11px 0 0;
+  /* overflow: hidden; */
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border-radius: 0 0 11px 11px;
+}
+
+
+@media (max-width: 700px) {
+  .ql-editor {
+    font-size: 1.24em;
+  }
+}
+
+
+.text_selected .editor_input {
+  position: relative;
+}
+
+.text_selected .ql-toolbar.ql-snow {
+  top: -62px;
+  position: absolute;
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 1px 2px 4px #6f6f6f;
+  border-radius: 5px;
+}
+
+.text_selected .ql-editor:focus {
+  padding-top: 50px;
+}

@@ -1,0 +1,270 @@
+@media (max-width: 700px) {
+  .main input,
+  .main span[contenteditable],
+  .main div[contenteditable]{
+   font-size: 16px!important; 
+  }
+}
+
+.main .desktop {
+  height: calc(100% - 45px);
+  width: 100%;
+}
+
+.main .desktop_items {
+  border: none;
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 93%;
+}
+
+.main .desktop_items .shortcut{
+
+  position: relative;
+  width: 70px;
+  height: 100px;
+  margin: 2px;
+}
+
+
+
+@media (max-width:700px) {
+  .main {
+    position: fixed;
+  }
+
+  /* .main .mobile_menu {
+      width: 100%;
+      height: 66%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      align-items: center;
+
+      justify-content: space-evenly;
+      row-gap: 5px;
+      column-gap: 39px;  
+  } */
+
+
+  .main .mobile_menu {
+    width: 100%;
+    height: 67%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* gap: 59px; */
+    align-items: center;
+    /* row-gap: 0; */
+    justify-content: space-evenly;
+    row-gap: 5px;
+    column-gap: 39px;
+}
+
+  .main .mobile_menu .shortcut{
+    position: relative;
+    width: 70px;
+    height: 100px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+  }
+
+  .main .mobile_menu .shortcut span{
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    font-size: 0.9em;
+    max-height: 20px;
+    line-height: 16px;
+  }
+  
+  .main .mobile_sections {
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgba(0, 0, 0, 0.63); */
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -1px;
+  }
+
+  .main .show_open_apps .open_apps {
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.63);
+    align-items: center;
+    /* justify-content: center; */
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 50px;
+  }
+
+  .main .show_open_apps .taskbar {
+    position: relative;
+    bottom: unset;
+  }
+
+  .main .show_open_apps .open_apps::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+  }
+  
+  .main .show_open_apps .open_apps::-webkit-scrollbar-track {
+    background: #13131327; 
+  }
+
+  .main .show_open_apps .open_apps::-webkit-scrollbar-thumb {
+    background-color: rgba(122, 122, 122, 0.377);
+    border-radius: 20px; 
+/*     
+    border: 5px solid transparent;  */
+  }
+
+  .main .mobile_sections .taskbar {
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: -1px;
+  }
+
+  .main .mobile_sections .taskbar .mobile_nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  
+  .main .show_open_apps .taskbar .tasks,
+  .main .mobile_sections .taskbar .tasks{
+    display: none;
+    flex-direction: row;
+  }
+
+  .main .show_open_apps .open_apps .window_element{
+    position: relative;
+  
+    display: flex;
+    z-index: unset;
+    top: unset;
+    left: unset;
+    width: 300px;
+    height: 70vh;
+  }
+
+  .main .show_open_apps .open_apps .fullscreen{
+    width: 100%;
+    height: 100%;
+    /* position: fixed; */
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top:0;
+    z-index: 300;
+  }
+
+  .main .open_apps .window_element .window-header{
+    display: none;
+
+  }
+
+  .menu .mobile_sections {
+    height: 0;
+    top: unset;
+    bottom: -1px;
+  }
+
+  .menu .mobile_sections .open_apps{
+    display: none
+  }
+
+  .menu .mobile_sections  .taskbar{
+    position: absolute;
+  }
+
+  .running_apps .mobile_menu{
+    display: none
+  }
+
+  .running_apps .mobile_sections .open_apps .window_element .squareContent{
+    pointer-events: none;
+    width: 300px;
+  }
+
+  .fullsized_app .show_open_apps .open_apps{
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .fullsized_app .show_open_apps .open_apps .window_element{
+    display: none;
+  }
+
+  .fullsized_app .show_open_apps  .open_apps .fullscreen{
+    display: flex;
+  }
+
+}
+
+
+.container {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  border: solid 1px black;
+  margin-top: 100px;
+  margin-left: 100px;
+  color: black;
+  background-color: white;
+}
+
+.row {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editor, .preview {
+  position: relative;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-all;
+}
+
+.editor {
+  border-right: solid 1px black;
+}
+
+.editor_input {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+
