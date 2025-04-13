@@ -1,5 +1,5 @@
 // Styles
-import "./ChatApp.css";
+import "./Main.css";
 
 // Assets
 import user_icon from "/user_icon.svg";
@@ -16,9 +16,7 @@ import ChatRoom from '../ChatRoom/ChatRoom';
 
 import { setPage } from "../../../../state/app/appSlice";
 
-
-
-const ChatApp = () => {
+const Main = () => {
   const { apps } = useSelector(state => state.app);
   const { room } = useSelector(state => state.room);
   const { user } = useSelector((state) => state.user);
@@ -58,4 +56,4 @@ const ChatApp = () => {
   )
 }
 
-export default ChatApp;
+export default Main;

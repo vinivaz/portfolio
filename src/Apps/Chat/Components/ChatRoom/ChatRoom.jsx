@@ -61,7 +61,7 @@ const ChatRoom = () => {
           </>)
           :
           (
-            <div className="current_messages">vazioooor</div>
+            <div className="current_messages">No messages yet...</div>
           )}
         </div>
         <SendMessage/>

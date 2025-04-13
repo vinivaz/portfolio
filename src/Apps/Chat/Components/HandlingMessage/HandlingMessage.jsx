@@ -1,4 +1,4 @@
-import React from 'react'
+import "./HandlingMessage.css";
 
 const HandlingMessage = ({data, userId, cancel}) => {
   return (

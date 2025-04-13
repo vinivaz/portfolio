@@ -24,7 +24,7 @@ import { roomData } from "./Components/Database/roomData.js";
 
 // Components
 import Window from "../../Components/Window/Window";
-import ChatApp from "./Components/ChatApp/ChatApp.jsx";
+import Main from "./Components/Main/Main.jsx";
 
 const Chat = () => {
 
@@ -67,7 +67,7 @@ const Chat = () => {
   return (
       <Window app={apps["chat"]}>
         {firstScreen ===false ?
-          <ChatApp/>
+          <Main/>
         :
           <div className="intro_container">
             <div className="intro">

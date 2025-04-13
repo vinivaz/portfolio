@@ -1,9 +1,14 @@
-@media (max-width: 700px) {
-  .main input,
-  .main span[contenteditable],
-  .main div[contenteditable]{
-   font-size: 16px!important; 
-  }
+.main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  background: linear-gradient(45deg, #673AB7, #52667f);
+  background-image: url('/wallpaper-teste.png');
+  background-repeat:no-repeat;
+  background-size:cover;
+  overflow:hidden;
 }
 
 .main .desktop {
@@ -28,10 +33,16 @@
 }
 
 
-
 @media (max-width:700px) {
+
   .main {
     position: fixed;
+  }
+
+  .main input,
+  .main span[contenteditable],
+  .main div[contenteditable]{
+   font-size: 16px!important; 
   }
 
   /* .main .mobile_menu {
@@ -48,29 +59,22 @@
       column-gap: 39px;  
   } */
 
-
   .main .mobile_menu {
     width: 100%;
     height: 67%;
     display: inline-flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* gap: 59px; */
     align-items: center;
-    /* row-gap: 0; */
     justify-content: space-evenly;
     row-gap: 5px;
     column-gap: 39px;
-}
+  }
 
   .main .mobile_menu .shortcut{
     position: relative;
     width: 70px;
     height: 100px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
   }
 
   .main .mobile_menu .shortcut span{
@@ -124,8 +128,7 @@
   .main .show_open_apps .open_apps::-webkit-scrollbar-thumb {
     background-color: rgba(122, 122, 122, 0.377);
     border-radius: 20px; 
-/*     
-    border: 5px solid transparent;  */
+    /* border: 5px solid transparent;  */
   }
 
   .main .mobile_sections .taskbar {

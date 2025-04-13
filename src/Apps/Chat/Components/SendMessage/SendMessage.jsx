@@ -1,3 +1,6 @@
+// Styles
+import "./SendMessage.css";
+
 // Assets
 import mic from "/mic.svg";
 import clip_shadow_light from "/clip_shadow_light.svg";

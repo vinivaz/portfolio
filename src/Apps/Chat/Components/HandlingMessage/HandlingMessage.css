@@ -1,0 +1,46 @@
+.chat .handling_message {
+  position: absolute;
+  bottom: 46px;
+  width: 100%;
+  max-height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  z-index: 8;
+  flex-direction: column;
+}
+
+.chat .handling_message .message_handle {
+  width: 100%;
+  color: #919191;
+  font-size: 0.83em;
+  text-align: start;
+  border-bottom: solid 1px #494949;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  position: relative;
+}
+
+.chat .handling_message .message_handle .cancel {
+  position: absolute;
+  right: -1px;
+  color: #8d8d8d;
+  background-color: transparent;
+  border: none;
+  padding: 0 5px;
+}
+
+.chat .handling_message .message_handle span{
+  padding: 3px 16px;
+  text-overflow: ellipsis;
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.chat .handling_message .send_message_box {
+  height: fit-content;
+}
