@@ -1,7 +1,7 @@
 // Img
 import logo from "/chat_logo.png";
 // import lih_logo from "/lih_logo.png";
-import vshop_logo from "/vshop_logo.svg";
+import vshop_logo from "/vshop_logo.png";
 import lih_logo from "/currents_logo.png";
 import portfolio_logo from "/portfolio_logo.png";
 import studio_pop_logo from "/studio/studio_pop_icon.png";
