@@ -1,6 +1,7 @@
 // Img
 import logo from "/chat_logo.png";
 // import lih_logo from "/lih_logo.png";
+import vshop_logo from "/vshop_logo.svg";
 import lih_logo from "/currents_logo.png";
 import portfolio_logo from "/portfolio_logo.png";
 import studio_pop_logo from "/studio/studio_pop_icon.png";
@@ -36,6 +37,29 @@ const initialState = {
       left: undefined,
       page: "rooms",
       previous_page: "rooms",
+      size_class: ""
+    },
+    "Vshop": {
+      id: 1,
+      name: "Vshop",
+      display_name: "Vshop",
+      zIndex:20,
+      icon: vshop_logo,
+      minimized: false,
+      fullscreen: false,
+      open: false,
+      appRect: undefined,
+      elementId: "vshopId",
+      drag_elements: ["vshopdraggable"],
+      storedStyle: undefined,
+      width: 560,
+      height: 350,
+      top: undefined,
+      right: undefined,
+      bottom: undefined,
+      left: undefined,
+      page: "",
+      previous_page: "",
       size_class: ""
     },
     "lih": {

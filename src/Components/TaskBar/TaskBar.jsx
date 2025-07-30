@@ -101,6 +101,11 @@ const TaskBar = () => {
             <img src={apps.chat.icon}/>
           </div>
         )}
+        {apps.Vshop.open && (
+          <div onClick={() => handleClickTask(apps.Vshop.name)} className="task">
+            <img src={apps.Vshop.icon}/>
+          </div>
+        )}
         {apps.lih.open && (
           <div onClick={() => handleClickTask(apps.lih.name)} className="task">
             <img src={apps.lih.icon}/>

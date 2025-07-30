@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // Apps
 import Chat from '../../Apps/Chat/Chat';
 // import Chat from "../../Apps/ChatFirebase/Chat";
+import Vshop from '../../Apps/V-shop/V-shop';
 import FavSong from '../../Apps/FavSong/FavSong';
 import Studio from '../../Apps/Studio/Studio';
 import Portfolio from '../../Apps/Portfolio/Portfolio';
@@ -156,6 +157,7 @@ const OS = () =>{
       <div className="mobile_sections show_open_apps">
         <div className="open_apps show" >
           {apps.chat.open && <Chat/>}
+          {apps.Vshop.open && <Vshop/>}
           {apps.lih.open && <FavSong/>}
           {apps.portfolio.open && <Portfolio/>}
           {apps.studio_pop.open && <Studio/>}

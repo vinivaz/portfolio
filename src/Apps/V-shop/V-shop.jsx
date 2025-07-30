@@ -6,7 +6,7 @@ import Window from "../../Components/Window/Window";
 
 // Hooks
 import { useSelector } from "react-redux";
-import { useRef } from "react";
+
 
 const FavSong = () => {
 
@@ -15,12 +15,12 @@ const FavSong = () => {
 
   return (
       <Window
-        app={apps["lih"]}
+        app={apps["Vshop"]}
       >
         <div className="false_window_content">
           <iframe
             // src="http://localhost:3000"
-            src="https://www.youtube.com/embed/NMRhx71bGo4?si=Ni1EUourSwgU7zGH"
+            src="https://v-shop-eight.vercel.app/"
             // title="YouTube video player"
             // frameBorder="0"
             // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
